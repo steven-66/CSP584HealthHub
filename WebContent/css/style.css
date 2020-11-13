@@ -44,6 +44,7 @@ h4 {
   width: 35%;
 }
 
+
 /* custom input placeholder */
 input::placeholder {
   font-size: 14px !important;
@@ -61,3 +62,15 @@ input::placeholder {
 i {
   color: #b8c1ec;
 }
+
+/* custome buttons in product page */
+.card button:first-of-type {
+  color: #232946;
+  background-color: #b8c1ec;
+}
+
+.card button:nth-of-type(2),
+.card button:nth-of-type(3) {
+  color: #232946;
+}
+
