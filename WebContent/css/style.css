@@ -1,0 +1,63 @@
+.fixed-top-2 {
+  margin-top: 56px;
+}
+
+body {
+  padding-top: 105px;
+  background-color: #fff;
+}
+
+header,
+footer {
+  background-color: #232946;
+  z-index: 2000 !important;
+}
+
+nav {
+  background-color: #fff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+a,
+h4 {
+  color: #232946;
+}
+
+/*custom search button and input*/
+#search-form {
+  background-color: #232946;
+  color: #fff;
+  border: 1px solid #eebbc3;
+}
+
+#search-btn,
+#search-input,
+#search-input::placeholder {
+  background-color: #232946;
+  border: 1px solid #232946;
+  color: #fff;
+}
+
+/* custom login form */
+.login-form-container {
+  margin: 0 auto;
+  width: 35%;
+}
+
+/* custom input placeholder */
+input::placeholder {
+  font-size: 14px !important;
+}
+
+/* custom all butttons */
+.form-btn {
+  color: #232946 !important;
+  font-weight: bold !important;
+  border-color: #eebbc3 !important;
+  background-color: #eebbc3 !important;
+}
+
+/* custom icons color */
+i {
+  color: #b8c1ec;
+}
