@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%
+ String basePath = request.getContextPath();
+%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -16,11 +19,6 @@
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet" />
     <script
-      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-      crossorigin="anonymous"
-    ></script>
-    <script
       src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
       integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
       crossorigin="anonymous"
@@ -34,7 +32,7 @@
   <body>
     <!-- Header-->
     <header class="navbar navbar-light fixed-top">
-      <a class="navbar-brand text-white">Health Hub</a>
+      <a class="navbar-brand text-white" href="index.jsp">Health Hub</a>
     </header>
     <div class="login-form-container">
       <h4 class="text-center w-75 mx-auto mb-4">Create an HeathHub account</h4>
@@ -67,20 +65,42 @@
             name="emailAddress"
             placeholder="Email Address"
           />
+          <label id="warning" style="align:center;"></label>
         </div>
         <script type="text/javascript">
         	function validate(){
         		if (document.getElementById('password').value != document.getElementById('repassword').value) {
                     document.getElementById('repassword').focus();              
-                    document.getElementById("alert").innerHTML="<font color='red'>two password don't match</font>";
+                    document.getElementById("alert").innerHTML="<font color='red'>two passwords don't match</font>";
                     document.getElementById("submit").disabled = true;
                 }else{
+                	document.getElementById("alert").innerHTML="";
                 	document.getElementById("submit").disabled = false;
                 }
         		
                 return  true;
         	}
-        	<!-- ajax request for validate username-->
+        	$("#email-address").blur(function(){
+        		var curValue=$("#email-address").val();
+        		$.ajax({
+                    url : "/CSP584HealthHub/RegisterServlet?userName=" + curValue,
+                    type : "get",
+                    success : function(data) {
+                       if($.parseJSON(data) == "false"){
+                    	   
+                    	   document.getElementById("warning").innerHTML = "<font color='red'>User Name has existed</font>";
+                    	   document.getElementById("submit").disabled = true;
+                       }else{
+                    	   document.getElementById("submit").disabled = false;
+                    	   document.getElementById("warning").innerHTML = "";
+                       }
+                       
+                    }, error: function(){
+                        console.log("error occurred while making ajax call;")
+                    }
+              });
+        	});
+        	
         </script>
         <div class="form-group">
           <input
@@ -100,7 +120,7 @@
             name="repassword"
             placeholder="Confirm Password"
             required
-            onkeyup="validate()"
+            onblur="validate()"
             />
           <span id="alert"></span>
         </div>

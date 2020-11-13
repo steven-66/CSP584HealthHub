@@ -46,7 +46,7 @@
   <body>
     <!-- Header-->
     <header class="navbar navbar-expand fixed-top justify-content-between">
-      <a class="navbar-brand text-light">Health Hub</a>
+      <a class="navbar-brand text-light" href="index.jsp">Health Hub</a>
       <form id="search-form" class="form-inline">
         <input
           id="search-input"

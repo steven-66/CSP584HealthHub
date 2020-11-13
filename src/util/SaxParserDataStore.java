@@ -1,5 +1,6 @@
 package util;
 
+
 import org.xml.sax.InputSource;
 
 import java.io.IOException;
@@ -12,6 +13,7 @@ import javax.xml.parsers.SAXParserFactory;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
+
 
 import bean.Product;
 
@@ -29,7 +31,7 @@ You should extend DefaultHandler and override the method when parsin the XML doc
 
 public class SaxParserDataStore extends DefaultHandler {
     
-    static HashMap<String, Product> products;
+    public static HashMap<String, Product> products;
     String consoleXmlFileName;
     String elementValueRead;
 	String currentElement="";
@@ -40,6 +42,7 @@ public class SaxParserDataStore extends DefaultHandler {
 	public SaxParserDataStore(String consoleXmlFileName) {
 	    this.consoleXmlFileName = consoleXmlFileName;
 		products = new HashMap<>();
+		parseDocument();
     }
 
    //parse the xml using sax parser to get the data
@@ -55,6 +58,7 @@ public class SaxParserDataStore extends DefaultHandler {
         } catch (SAXException e) {
             System.out.println("SAXException : xml not well formed");
         } catch (IOException e) {
+        	System.out.println(e.getMessage());
             System.out.println("IO error");
         }
 	}
@@ -83,20 +87,38 @@ https://docs.oracle.com/javase/7/docs/api/org/xml/sax/helpers/DefaultHandler.htm
 	// when xml start element is parsed store the id into respective hashmap for console,games etc 
     @Override
     public void startElement(String str1, String str2, String elementName, Attributes attributes) throws SAXException {
-    	product = new Product();
-    	product.setCatagory(elementName);
-    	product.setId(attributes.getValue("id"));
-    	product.setInventory(100);
-    	product.setCondition(attributes.getValue("condition"));
-    	product.setDiscount(attributes.getValue("discount"));
-    	product.setManufacturer(attributes.getValue("manufacturer"));
-    	product.setPrice(attributes.getValue("price"));
-    	product.setImage(attributes.getValue("image"));
+    	
+    	if(elementName.equals("vitamin") || elementName.equals("medicine") || elementName.equals("personalcare") || elementName.equals("homecare") || elementName.equals("nutrition")) {
+    		product = new Product();
+    		System.out.println(attributes.getValue("id"));
+        	product.setCatagory(elementName);
+        	product.setId(attributes.getValue("id"));
+        	product.setInventory(100);
+    	}
+    	
+    	
     }
 	// when xml end element is parsed store the data into respective hashmap for console,games etc respectively
     @Override
     public void endElement(String str1, String str2, String element) throws SAXException {
-    	 products.put(product.getId(), product);
+    	if(element.equals("condition")) {
+    		product.setCondition(elementValueRead);
+    	}
+    	
+    	if(element.equals("discount")) {
+    		product.setDiscount(Double.parseDouble(elementValueRead));
+    	}
+    	if(element.equals("manufacturer")) {
+    		product.setManufacturer(elementValueRead);
+    	}
+    	                                   
+    	if(element.equals("price")) {
+    		product.setPrice(Double.parseDouble(elementValueRead));
+    	}
+    	if(element.equals("image")) {
+    		product.setImage(elementValueRead);
+    	}
+    	products.put(product.getId(), product);
 	}
 	//get each element in xml tag
     @Override
