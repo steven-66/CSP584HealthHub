@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <% 
+	String path = request.getContextPath();
+	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -41,6 +45,7 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
+    <script type="text/javascript" src="js/autocomplete.js"></script>
   </head>
 
   <body>
@@ -54,7 +59,12 @@
           type="search"
           placeholder="Search"
           aria-label="Search"
+          onkeyup="doCompletion()"
         />
+        <div class='dropdown-menu' aria-labelledby='navbarDropdownMenuLink' id="auto-row">
+				<table id="complete-table" class="gridtable"
+					style="position: absolute; width: 315px;"></table>
+		</div>
         <button id="search-btn" class="btn btn-sm my-sm-0" type="submit"><i class="fas fa-search"></i></button>
       </form>
       <ul class="navbar-nav flex-row">
@@ -72,7 +82,7 @@
           	if(username != null){
           		out.println("<i class='far fa-user'>" + username + "</i></a>");
           		out.println("<div class='dropdown-menu' aria-labelledby='navbarDropdownMenuLink'>"
-          	            +"<a class='dropdown-item' href='logout.jsp'>Log out</a>"
+          	            +"<a class='dropdown-item' href='LogoutServlet'>Log out</a>"
           	            +"<a class='dropdown-item' href='viewSchedule.jsp'>View Schedule</a>"
           	            +"<a class='dropdown-item' href='viewOrder.jsp'>View Order</a>"
           	          	+"</div>");

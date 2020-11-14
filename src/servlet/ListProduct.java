@@ -18,7 +18,6 @@ public class ListProduct extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response){
 		String type = request.getParameter("type");
 		List<Product> products = productCrudService.getProductByCatagory(type);
-		System.out.println(products);
 		request.setAttribute("products", products);
 		try {
 			request.getRequestDispatcher("listProduct.jsp").forward(request, response);
