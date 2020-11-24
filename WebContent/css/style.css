@@ -44,7 +44,6 @@ h4 {
   width: 35%;
 }
 
-
 /* custom input placeholder */
 input::placeholder {
   font-size: 14px !important;
@@ -74,3 +73,21 @@ i {
   color: #232946;
 }
 
+/* custom style in cart page */
+.btn-checkout {
+  color: #232946;
+  background-color: #b8c1ec;
+}
+
+.table td {
+  border-top: 1px solid #b8c1ec;
+}
+
+.table thead th {
+  border-top: 1px solid #b8c1ec;
+  border-bottom: 1px solid #b8c1ec;
+}
+
+.table-hover > tbody > tr:hover {
+  background-color: #fff; /* Assuming you want the hover color to be white */
+}
