@@ -91,3 +91,54 @@ i {
 .table-hover > tbody > tr:hover {
   background-color: #fff; /* Assuming you want the hover color to be white */
 }
+
+/* find-doctor and medical-services page */
+.locations-filters {
+  border-radius: 6px;
+  padding: 15px;
+  background-color: #121212;
+  color: #fff;
+}
+
+.locations-filters:hover,
+.location-list:hover {
+  box-shadow: 1px 2px 24px #666;
+  transition: 0.5;
+}
+
+.filters-form-title {
+  font-family: sans-serif;
+  font-weight: lighter;
+}
+
+.location-list {
+  margin-top: 10px;
+  border-radius: 6px;
+  padding: 10px;
+  background-color: rgba(255, 87, 34, 0.9);
+  color: #fff;
+}
+
+#map {
+  border-radius: 6px;
+}
+
+#doctor-info {
+  background: #f1f1f1;
+  margin-bottom: 5px;
+}
+
+.doctor-info {
+  list-style: none;
+  padding: 15px;
+  margin-bottom: 5px;
+  background-color: rgba(80, 140, 140, 0.85);
+  border-radius: 6px;
+  transition: 0.55s;
+  color: #000;
+}
+
+.doctor-info:hover {
+  box-shadow: 7px 5px 15px 5px #a1a1a1;
+  transition: 0.55s;
+}
