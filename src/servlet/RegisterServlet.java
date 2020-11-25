@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+
 import service.UserService;
 
 @WebServlet("/RegisterServlet")
@@ -35,6 +37,19 @@ public class RegisterServlet extends HttpServlet{
 	}
 	//ajax check username is already existing
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) {
-		
+		String userName = request.getParameter("userName");
+		String ret = "false";
+		if(UserService.checkRegister(userName)) {
+			ret = "true";
+		}
+		String retJson = new Gson().toJson(ret);
+        response.setContentType("application/JSON");
+        response.setCharacterEncoding("UTF-8");
+        try {
+			response.getWriter().write(retJson);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

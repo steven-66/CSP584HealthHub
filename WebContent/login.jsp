@@ -33,7 +33,7 @@
   <body>
     <!-- Header-->
     <header class="navbar navbar-light fixed-top">
-      <a class="navbar-brand text-white">Health Hub</a>
+      <a class="navbar-brand text-white" href="index.jsp">Health Hub</a>
     </header>
     <div class="login-form-container">
       <h4 class="text-center w-75 mx-auto mb-4">Sign in to HealthHub</h4>
