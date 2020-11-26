@@ -9,7 +9,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>Health Hub Medical Services</title>
+    <title>Health Hub Hospitals</title>
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -19,13 +19,8 @@
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet" />
     <script
-      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
       crossorigin="anonymous"
     ></script>
     <script
@@ -44,7 +39,6 @@
         /* The width is the width of the web page */
       }
     </style>
-
     <script
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZDNJwU99Q009643oAb4Np9Sw6ebIN3mo&callback=initMap&libraries=&v=weekly"
       defer
@@ -58,7 +52,7 @@
           <div class="locations-filters">
             <div class="wrap">
               <h2 class="filters-form-title">
-                Select a service to find a provider near you:
+                Select a Hospital according to your requirement:
               </h2>
 
               <div class="filters-form-wrapper">
@@ -72,34 +66,52 @@
                     <div class="filters-form-checkbox">
                       <input
                         type="checkbox"
-                        id="chk_home_health"
+                        id="chk_urgent"
                         name="services[]"
                         data-service-id="23"
                         value="23"
                       />
-                      <label for="chk_home_health">Home Health</label>
+                      <label for="chk_urgent">Urgency</label>
                     </div>
                     <div class="filters-form-checkbox">
                       <input
                         type="checkbox"
-                        id="chk_hospice"
+                        id="chk_child"
                         name="services[]"
                         data-service-id="26"
                         value="26"
                       />
-                      <label for="chk_hospice">Hospice Care</label>
+                      <label for="chk_child">Children Hospital</label>
                     </div>
                     <div class="filters-form-checkbox">
                       <input
                         type="checkbox"
-                        id="chk_medical_equipment"
+                        id="chk_old"
                         name="services[]"
                         data-service-id="25"
                         value="25"
                       />
-                      <label for="chk_medical_equipment"
-                        >Home Medical Equipment</label
-                      >
+                      <label for="chk_old">Old Age Homes</label>
+                    </div>
+                    <div class="filters-form-checkbox">
+                      <input
+                        type="checkbox"
+                        id="chk_phy"
+                        name="services[]"
+                        data-service-id="25"
+                        value="25"
+                      />
+                      <label for="chk_phy">Physician</label>
+                    </div>
+                    <div class="filters-form-checkbox">
+                      <input
+                        type="checkbox"
+                        id="chk_surg"
+                        name="services[]"
+                        data-service-id="25"
+                        value="25"
+                      />
+                      <label for="chk_surg">Surgery</label>
                     </div>
                   </div>
 
@@ -149,36 +161,8 @@
         </div>
 
         <div class="col-9" id="custom-border">
-          <ul>
-            <li class="doctor-info" id="custom-border">
-              <h5>Dr. David Walner, MD</h5>
-              <p>Ear, Nose & Throat Doctor</p>
-              <p>773456789</p>
-              <p>1460 N Halsted St, Suite 506Chicago, IL, 60642</p>
-            </li>
-
-            <li class="doctor-info" id="custom-border">
-              <h5>Dr. Kathryn Colman, MD</h5>
-              <p>Ear, Nose & Throat Doctor</p>
-              <p>773542987</p>
-              <p>3000 N Halsted St, Suite 400ChicagoIL60657</p>
-            </li>
-
-            <li class="doctor-info" id="custom-border">
-              <h5>Dr. Raymond Kleinfelder, DO</h5>
-              <p>Dermatologist</p>
-              <p>773765432</p>
-              <p>
-                Lincoln Park 2845 N Sheridan Rd, Suite 912, Chicago, IL, 60657
-              </p>
-            </li>
-            <li class="doctor-info" id="custom-border">
-              <h5>Dr. Renata Gazzi-Johnson, MD</h5>
-              <p>Primary Care Doctor</p>
-              <p>773123870</p>
-              <p>2418 N Ashland AveChicagoIL60614</p>
-            </li>
-          </ul>
+          <!--maps-->
+          <div id="map"></div>
         </div>
       </div>
     </div>
