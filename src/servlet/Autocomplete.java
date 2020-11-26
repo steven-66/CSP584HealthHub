@@ -43,19 +43,18 @@ public class Autocomplete extends HttpServlet {
 
             // check if user sent empty string
             if (!targetId.equals("")) {
-
+            	int size = 0;
                 Iterator it = SaxParserDataStore.products.keySet().iterator();
                 while (it.hasNext()) {
-                	
                     String id = (String) it.next();
                     Product product = SaxParserDataStore.products.getOrDefault(id, new Product());
-                    if (product.getName().toLowerCase().indexOf(targetId) >= 0) {
-
+                    if (product.getName().toLowerCase().indexOf(targetId) >= 0 && size < 5) {
                         sb.append("<product>");
                         sb.append("<id>" + product.getId() + "</id>");
                         sb.append("<productName>" + product.getName() + "</productName>");
                         sb.append("</product>");
                         namesAdded = true;
+                        size++;
                     }
                 }
             }
@@ -73,9 +72,9 @@ public class Autocomplete extends HttpServlet {
         if (action.equals("lookup")) {
 
             // put the target composer in the request scope to display 
-            if ((targetId != null) && 	SaxParserDataStore.products.containsKey(targetId.trim())) {
+            if ((targetId != null) && SaxParserDataStore.products.containsKey(targetId.trim())) {
                 request.setAttribute("product", SaxParserDataStore.products.get(targetId));
-                request.getRequestDispatcher("/ViewDetail").forward(request, response);
+                request.getRequestDispatcher("/ViewProduct").forward(request, response);
             }
         }
     }
