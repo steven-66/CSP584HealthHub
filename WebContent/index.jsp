@@ -1,9 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <% 
-	String path = request.getContextPath();
-	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
 <%@ include file="header.jsp"%>
           <%
           	String username = (String)request.getSession().getAttribute("username");
@@ -31,41 +27,7 @@
     </header>
     
     <!-- Navigation -->
-    <nav
-      class="navbar justify-content-center navbar-light fixed-top fixed-top-2"
-    >
-      <ul class="nav">
-        <li class="nav-item px-3">
-          <a class="nav-link active" href="#"><i class="fas fa-home"></i> Home</a>
-        </li>
-        <li class="nav-item px-3">
-          <a class="nav-link active" href="#"><i class="fas fa-calendar-alt"></i> Schedule an Appointment</a>
-        </li>
-        <li class="nav-item px-3">
-          <a class="nav-link" href="#"><i class="fas fa-stethoscope"></i> Find a Doctor</a>
-        </li>
-        <li class="nav-item px-3">
-          <a class="nav-link" href="#"><i class="far fa-compass"></i> Find a Location</a>
-        </li>
-        <li class="nav-item dropdown px-3">
-          <a
-            class="nav-link dropdown-toggle"
-            href="#"
-            id="navbarDropdownMenuLink"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          ><i class="fas fa-shopping-bag"></i> 
-            Product
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="#">Category#1</a>
-            <a class="dropdown-item" href="#">Category#2</a>
-            <a class="dropdown-item" href="#">Category#3</a>
-          </div>
-        </li>
-      </ul>
-    </nav>
+    <%@ include file="leftNavBar.jsp" %>
 
     <!-- Page Content -->
     <div class="container">

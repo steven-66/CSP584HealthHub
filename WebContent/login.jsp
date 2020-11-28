@@ -38,10 +38,10 @@
     <div class="login-form-container">
       <h4 class="text-center w-75 mx-auto mb-4">Sign in to HealthHub</h4>
       <% 
-        	Boolean login_msg = (Boolean)request.getAttribute("login_msg");
+        	String login_msg = (String)request.getAttribute("login_msg");
       		String register_msg = (String)request.getAttribute("register_msg");
-        	if(login_msg != null && !login_msg){
-        		out.print("<h4 class='text-center w-75 mx-auto mb-4' style='color:red'>Please check your username, password and user type!</h4>");
+        	if(login_msg != null){
+        		out.print("<h4 class='text-center w-75 mx-auto mb-4' style='color:red'>"+login_msg+"</h4>");
         	}
         	if(register_msg != null){
         		out.print("<h4 class='text-center w-75 mx-auto mb-4' style='color:red'>" + register_msg +  "</h4>");

@@ -36,7 +36,7 @@
     </header>
     <div class="login-form-container">
       <h4 class="text-center w-75 mx-auto mb-4">Create an HeathHub account</h4>
-      <form action="<%=request.getContextPath() %>/RegisterServlet" method="post">
+      <form action="<%=request.getContextPath()%>/RegisterServlet" method="post">
         <div class="form-group">
           <input
             type="text"

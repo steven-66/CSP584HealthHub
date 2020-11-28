@@ -22,14 +22,14 @@ public class LoginServlet extends HttpServlet {
 				HttpSession session = request.getSession(true);
 				session.setAttribute("username", username);
 				session.setAttribute("usertype", usertype);
-				if(usertype.equals("customer"))response.sendRedirect("index.jsp");
+				if(usertype.equals("customer"))response.sendRedirect("listProduct.jsp");
 				else if(usertype.equals("manager"))response.sendRedirect("admin.jsp");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}else {
-			request.setAttribute("login_msg", false);
+			request.setAttribute("login_msg", "Please check your username, password and user type!");
 			try {
 				request.getRequestDispatcher("login.jsp").forward(request, response);
 			} catch (ServletException | IOException e) {
