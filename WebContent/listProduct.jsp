@@ -1,18 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
-<% 
-	String path = request.getContextPath();
-	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
 <%@ include file="header.jsp"%>
-            <i class="far fa-user"></i> Account
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="login.jsp">Sign in</a>
-            <a class="dropdown-item" href="register.jsp">Create account</a>
-            <a class="dropdown-item" href="#">View Order</a>
-          </div>
+           <%
+          	String username = (String)request.getSession().getAttribute("username");
+          	if(username != null){
+          		out.println("<i class='far fa-user'>" + username + "</i></a>");
+          		out.println("<div class='dropdown-menu' aria-labelledby='navbarDropdownMenuLink'>"
+          	            +"<a class='dropdown-item' href='LogoutServlet'>Log out</a>"
+          	            +"<a class='dropdown-item' href='viewSchedule.jsp'>View Schedule</a>"
+          	            +"<a class='dropdown-item' href='viewOrder.jsp'>View Order</a>"
+          	          	+"</div>");
+          	}else{
+          		out.println("<i class='far fa-user'> Account</i></a>");
+          		out.println("<div class='dropdown-menu' aria-labelledby='navbarDropdownMenuLink'>"
+          	            +"<a class='dropdown-item' href='login.jsp'>Sign in</a>"
+          	            +"<a class='dropdown-item' href='register.jsp'>Create account</a>"
+          	            +"<a class='dropdown-item' href='admin.jsp'>Admin</a>"
+          	          	+"</div>");
+          	}
+          %>
         </li>
         <li class="nav-item ml-3">
           <a class="nav-link text-light" href="#"
@@ -21,63 +28,7 @@
         </li>
       </ul>
     </header>
-
-    <!-- Navigation -->
-    <nav
-      class="navbar justify-content-center navbar-light fixed-top fixed-top-2"
-    >
-      <ul class="nav">
-        <li class="nav-item px-3">
-          <a class="nav-link active" href="#"
-            ><i class="fas fa-home"></i> Home</a
-          >
-        </li>
-        <li class="nav-item px-3">
-          <a class="nav-link active" href="appointment.html"
-            ><i class="fas fa-calendar-alt"></i> Schedule an Appointment</a
-          >
-        </li>
-        <li class="nav-item px-3">
-          <a class="nav-link" href="#"
-            ><i class="fas fa-stethoscope"></i> Doctors</a
-          >
-        </li>
-        <li class="nav-item px-3">
-          <a class="nav-link" href="#"
-            ><i class="far fa-compass"></i> Medical Services</a
-          >
-        </li>
-        <li class="nav-item px-3">
-          <a class="nav-link" href="#"
-            ><i class="far fa-compass"></i> Health Clubs</a
-          >
-        </li>
-        <li class="nav-item px-3">
-          <a class="nav-link" href="#"
-            ><i class="far fa-compass"></i> Hospitals</a
-          >
-        </li>
-        <li class="nav-item dropdown px-3">
-          <a
-            class="nav-link dropdown-toggle"
-            href="#"
-            id="navbarDropdownMenuLink"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-            ><i class="fas fa-shopping-bag"></i>
-            Product
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="ListProduct?type=vitamin">Vitamins</a>
-            <a class="dropdown-item" href="ListProduct?type=medicine">Medicine</a>
-            <a class="dropdown-item" href="ListProduct?type=personalcare">Personal Care</a>
-            <a class="dropdown-item" href="ListProduct?type=homecare">Home Care</a>
-            <a class="dropdown-item" href="ListProduct?type=nutrition">Nutrition</a>
-          </div>
-        </li>
-      </ul>
-    </nav>
+<%@ include file="leftNavBar.jsp" %>
 
     <!-- Page Content -->
     <div class="container mt-5">
@@ -117,9 +68,14 @@
 	                <button type="button" class="btn w-75 mb-2 mx-auto">
 	                  Add to Cart
 	                </button>
-	                <button type="button" class="btn w-75 mb-2 mx-auto">
-	                  Write Review
-	                </button>
+	                <form action="writeReview.jsp">
+	               		<input type="hidden" name="productName" value="${product.name}"/>
+	               		<input type="hidden" name="productId" value="${product.id}">
+	               		<input type="hidden" name="productImage" value="${product.image}">
+		                <button type="submit" class="btn w-75 mb-2 mx-auto">
+		                  Write Review
+		                </button>
+		             </form>
 	                <button type="button" class="btn w-75 mb-2 mx-auto">
 	                  View Review
 	                </button>

@@ -136,7 +136,9 @@ https://docs.oracle.com/javase/7/docs/api/org/xml/sax/helpers/DefaultHandler.htm
 	
 //call the constructor to parse the xml and get product details
  public static void addHashmap() {
-	 String TOMCAT_HOME = System.getProperty("catalina.home");	
-		new SaxParserDataStore("TOMCAT_HOME//webapps//CSP584HealthHub//ProductCatalog.xml");
+	 	String TOMCAT_HOME = System.getProperty("catalina.base");
+	 	
+		new SaxParserDataStore(TOMCAT_HOME + "//webapps//CSP584HealthHub//ProductCatalog.xml");
+//	 	new SaxParserDataStore("src/util/ProductCatalog.xml");
     } 
 }

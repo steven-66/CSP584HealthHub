@@ -12,7 +12,9 @@ public class Test {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		for(Product p : new ProductDaoImpl().getProductByCatagory("vitamin"))System.out.println(p.getId());
+		SaxParserDataStore.addHashmap();
+		ProductDaoImpl p = new ProductDaoImpl();
+		p.addAllProductsFromXML(new ArrayList<>(SaxParserDataStore.products.values()));
 	}
 
 }
