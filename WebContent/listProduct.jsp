@@ -1,33 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
+
 <%@ include file="header.jsp"%>
-           <%
-          	String username = (String)request.getSession().getAttribute("username");
-          	if(username != null){
-          		out.println("<i class='far fa-user'>" + username + "</i></a>");
-          		out.println("<div class='dropdown-menu' aria-labelledby='navbarDropdownMenuLink'>"
-          	            +"<a class='dropdown-item' href='LogoutServlet'>Log out</a>"
-          	            +"<a class='dropdown-item' href='viewSchedule.jsp'>View Schedule</a>"
-          	            +"<a class='dropdown-item' href='viewOrder.jsp'>View Order</a>"
-          	          	+"</div>");
-          	}else{
-          		out.println("<i class='far fa-user'> Account</i></a>");
-          		out.println("<div class='dropdown-menu' aria-labelledby='navbarDropdownMenuLink'>"
-          	            +"<a class='dropdown-item' href='login.jsp'>Sign in</a>"
-          	            +"<a class='dropdown-item' href='register.jsp'>Create account</a>"
-          	            +"<a class='dropdown-item' href='admin.jsp'>Admin</a>"
-          	          	+"</div>");
-          	}
-          %>
-        </li>
-        <li class="nav-item ml-3">
-          <a class="nav-link text-light" href="#"
-            ><i class="fas fa-shopping-cart"></i
-          ></a>
-        </li>
-      </ul>
-    </header>
+           
 <%@ include file="leftNavBar.jsp" %>
 
     <!-- Page Content -->
@@ -65,9 +40,17 @@
 	                  <!-- product price -->
 	                  <p>$${product.price}</p>
 	                </div>
-	                <button type="button" class="btn w-75 mb-2 mx-auto">
-	                  Add to Cart
-	                </button>
+	                <form action="<%=path %>/Cart" method="post">
+	                	<input type="hidden" name="productName" value="${product.name}">
+	                	<input type="hidden" name="productId" value="${product.id}">
+	               		<input type="hidden" name="productImage" value="${product.image}">
+	               		<input type="hidden" name="productPrice" value="${product.price}">
+	               		<input type="hidden" name="productBrand" value="${product.manufacturer}">
+	               		<input type="hidden" name="productInventory" value="${product.inventory}">
+		            	<button type="submit" class="btn w-75 mb-2 mx-auto">
+		                  Add to Cart
+		            	</button>
+		            </form>
 	                <form action="writeReview.jsp">
 	               		<input type="hidden" name="productName" value="${product.name}"/>
 	               		<input type="hidden" name="productId" value="${product.id}">
