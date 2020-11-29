@@ -90,7 +90,6 @@ https://docs.oracle.com/javase/7/docs/api/org/xml/sax/helpers/DefaultHandler.htm
     	
     	if(elementName.equals("vitamin") || elementName.equals("medicine") || elementName.equals("personalcare") || elementName.equals("homecare") || elementName.equals("nutrition")) {
     		product = new Product();
-    		
         	product.setCatagory(elementName);
         	product.setId(attributes.getValue("id"));
         	product.setInventory(100);
@@ -120,7 +119,6 @@ https://docs.oracle.com/javase/7/docs/api/org/xml/sax/helpers/DefaultHandler.htm
     	if(element.equals("image")) {
     		product.setImage(elementValueRead);
     	}
-    	System.out.println(product.getName());
     	products.put(product.getId(), product);
 	}
 	//get each element in xml tag

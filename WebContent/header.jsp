@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 <% 
 		String path = request.getContextPath();
 		String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -40,12 +41,15 @@
       integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
       crossorigin="anonymous"
     ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script
       src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
     <script type="text/javascript" src="js/autocomplete.js"></script>
+    <script type="text/javascript" src="js/cart.js">
+    </script>
   </head>
 
   <body>
@@ -76,3 +80,29 @@
             aria-haspopup="true"
             aria-expanded="false"
           >
+          <%
+          	String username = (String)request.getSession().getAttribute("username");
+          	if(username != null){
+          		out.println("<i class='far fa-user'>" + username + "</i></a>");
+          		out.println("<div class='dropdown-menu' aria-labelledby='navbarDropdownMenuLink'>"
+          	            +"<a class='dropdown-item' href='LogoutServlet'>Log out</a>"
+          	            +"<a class='dropdown-item' href='viewSchedule.jsp'>View Schedule</a>"
+          	            +"<a class='dropdown-item' href='viewOrder.jsp'>View Order</a>"
+          	          	+"</div>");
+          	}else{
+          		out.println("<i class='far fa-user'> Account</i></a>");
+          		out.println("<div class='dropdown-menu' aria-labelledby='navbarDropdownMenuLink'>"
+          	            +"<a class='dropdown-item' href='login.jsp'>Sign in</a>"
+          	            +"<a class='dropdown-item' href='register.jsp'>Create account</a>"
+          	            +"<a class='dropdown-item' href='admin.jsp'>Admin</a>"
+          	          	+"</div>");
+          	}
+          %>
+        </li>
+        <li class="nav-item ml-3">
+          <a class="nav-link text-light" href="#"
+            ><i class="fas fa-shopping-cart"></i
+          ></a>
+        </li>
+      </ul>
+    </header>
