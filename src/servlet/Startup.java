@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 
 import dao.ProductDaoImpl;
+import dao.StoreDaoImpl;
 import util.SaxParserDataStore;
 
 @WebServlet("/Startup")
@@ -23,5 +24,6 @@ public class Startup extends HttpServlet
 		System.out.println("System is booting");
 		SaxParserDataStore.addHashmap();
 		new ProductDaoImpl().addAllProductsFromXML(new ArrayList<>(SaxParserDataStore.products.values()));
+		new StoreDaoImpl().addAllStore();
    }
 }

@@ -58,10 +58,13 @@
 		                <button type="submit" class="btn btn-block w-75 mb-2 mx-auto">
 		                  Write Review
 		                </button>
-		             </form>
-	                <button type="button" class="btn btn-block w-75 mb-2 mx-auto">
-	                  View Review
-	                </button>
+		            </form>
+		            <form action="viewReview.jsp">
+		            	<input type="hidden" name="productName" value="${product.name}"/>
+		                <button type="submit" class="btn btn-block w-75 mb-2 mx-auto">
+		                  View Review
+		                </button>
+		            </form>
 	              </div>
 	            </div>
 			</c:forEach>

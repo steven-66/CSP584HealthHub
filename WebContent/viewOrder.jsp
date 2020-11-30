@@ -1,24 +1,8 @@
+<%@page import="servlet.Utilities"%>
+<%@page import="service.OrderService, java.util.*, bean.Order"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ include file="header.jsp"%>
-          <%
-          	String username = (String)request.getSession().getAttribute("username");
-          	if(username != null){
-          		out.println("<i class='far fa-user'>" + username + "</i></a>");
-          		out.println("<div class='dropdown-menu' aria-labelledby='navbarDropdownMenuLink'>"
-          	            +"<a class='dropdown-item' href='LogoutServlet'>Log out</a>"
-          	            +"<a class='dropdown-item' href='viewSchedule.jsp'>View Schedule</a>"
-          	            +"<a class='dropdown-item' href='viewOrder.jsp'>View Order</a>"
-          	          	+"</div>");
-          	}else{
-          		out.println("<i class='far fa-user'> Account</i></a>");
-          		out.println("<div class='dropdown-menu' aria-labelledby='navbarDropdownMenuLink'>"
-          	            +"<a class='dropdown-item' href='login.jsp'>Sign in</a>"
-          	            +"<a class='dropdown-item' href='register.jsp'>Create account</a>"
-          	            +"<a class='dropdown-item' href='admin.jsp'>Admin</a>"
-          	          	+"</div>");
-          	}
-          %>
         </li>
         <li class="nav-item ml-3">
           <a class="nav-link text-light" href="#"><i class="fas fa-shopping-cart"></i></a>
@@ -41,16 +25,25 @@
               <th>Total</th>
               <th>Status</th>
               <th></th>
+              <th></th>
             </tr>
           </thead>
+          <%
+          	Utilities utilities = new Utilities(request, response);
+          	List<Order> orders = new OrderService().getOrderByUser(utilities.username());
+         	pageContext.setAttribute("orders", orders);
+          %>
           <tbody>
-            <tr>
-              <td class="align-middle">113-2690376-1668220</td>
-              <td class="align-middle">Oct 29, 2020</td>
-              <td class="align-middle">$31.8</td>
-              <td class="align-middle">Pending...</td>
-              <td class="align-middle"><a href="#" class="text-danger">Cancel Order</a></td>
-            </tr>
+          	<c:forEach items="${orders}" var="order">
+	            <tr>
+	              <td class="align-middle">${order.orderId}</td>
+	              <td class="align-middle">${order.purchaseDate}</td>
+	              <td class="align-middle">$${order.totalPrice}</td>
+	              <td class="align-middle">${order.status}</td>
+	              <td class="align-middle"><a href="OrderProcess?method=delete&id=${order.orderId}" class="text-danger">Cancel Order</a></td>
+	              <td class="align-middle"><a href="OrderProcess?method=detail&id=${order.orderId}" class="text-danger">View Detail</a></td>
+	            </tr>
+           	</c:forEach>
           </tbody>
         </table>
       </div>
