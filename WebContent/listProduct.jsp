@@ -27,7 +27,7 @@
 	            <div class="col-lg-4 col-md-6 mb-4">
 	              <div class="card">
 	                <img
-	                  class="card-img-top"
+	                  class="card-img-top p-2"
 	                  src="image/products/${product.image}" 
 	                  style="height: 200px"
 	                  alt=""
@@ -47,7 +47,7 @@
 	               		<input type="hidden" name="productPrice" value="${product.price}">
 	               		<input type="hidden" name="productBrand" value="${product.manufacturer}">
 	               		<input type="hidden" name="productInventory" value="${product.inventory}">
-		            	<button type="submit" class="btn w-75 mb-2 mx-auto">
+		            	<button type="submit" class="btn btn-block w-75 mb-2 mx-auto">
 		                  Add to Cart
 		            	</button>
 		            </form>
@@ -55,11 +55,11 @@
 	               		<input type="hidden" name="productName" value="${product.name}"/>
 	               		<input type="hidden" name="productId" value="${product.id}">
 	               		<input type="hidden" name="productImage" value="${product.image}">
-		                <button type="submit" class="btn w-75 mb-2 mx-auto">
+		                <button type="submit" class="btn btn-block w-75 mb-2 mx-auto">
 		                  Write Review
 		                </button>
 		             </form>
-	                <button type="button" class="btn w-75 mb-2 mx-auto">
+	                <button type="button" class="btn btn-block w-75 mb-2 mx-auto">
 	                  View Review
 	                </button>
 	              </div>
