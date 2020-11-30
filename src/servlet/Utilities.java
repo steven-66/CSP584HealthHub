@@ -90,6 +90,7 @@ public class Utilities extends HttpServlet {
 		OrderItem orderItem = orderMap.get(productName);
 		totalPrice -= orderItem.getTotalPrice();
 		orderMap.remove(productName);
+		if(orderMap.size() == 0)totalPrice = 0;
 		session.setAttribute("orderMap", orderMap);
 		session.setAttribute("totalPrice", String.format("%.2f", totalPrice));
 	}

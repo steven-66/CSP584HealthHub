@@ -60,14 +60,14 @@
                   type="text"
                   class="form-control"
                   id="quantity"
-                  name="quantity"
+                  name="number"
                   placeholder="1"
                   value="${orderItem.quantity}"
                 />
               </td>
               <!-- Delete button -->
               <td class="col-sm-1 col-md-1">
-                <button type="button" class="btn btn-link" id="delete">Delete</button>
+                <button type="button" class="btn btn-link" name="del">Delete</button>
               </td>
               <!-- Price -->
               <td class="col-sm-1 col-md-1 text-center">
@@ -97,7 +97,7 @@
               <td> </td>
               <td> </td>
               <td>
-	                <button type="button" class="btn btn-default" onclick="window.location='listProduct.jsp'">
+	                <button type="button" class="btn btn-default" onclick="javascript:history.back(1);">
 	                  Continue Shopping
 	                </button>
 	             

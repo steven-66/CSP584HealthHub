@@ -61,14 +61,10 @@
 		            </form>
 		            <form action="viewReview.jsp">
 		            	<input type="hidden" name="productName" value="${product.name}"/>
-		                <button type="submit" class="btn w-75 mb-2 mx-auto">
+		                <button type="submit" class="btn btn-block w-75 mb-2 mx-auto">
 		                  View Review
 		                </button>
 		            </form>
-		             </form>
-	                <button type="button" class="btn btn-block w-75 mb-2 mx-auto">
-	                  View Review
-	                </button>
 	              </div>
 	            </div>
 			</c:forEach>

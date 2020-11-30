@@ -249,7 +249,7 @@
 	                        <a class="thumbnail pull-left" href="#">
 	                          <img
 	                            class="media-object"
-	                            src="image/pic02.JPG"
+	                            src="image/products/${orderItem.image}"
 	                            style="width: 72px; height: 72px"
 	                          />
 	                        </a>
@@ -278,7 +278,7 @@
 	                              type="button"
 	                              class="btn btn-sm btn-link"
 	                              style="background-color: #fff"
-	                              id="delete"
+	                              name="delete"
 	                            >
 	                              Delete
 	                            </button>
