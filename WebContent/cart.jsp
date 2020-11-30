@@ -110,6 +110,55 @@
         </table>
         </form>
       </div>
+      
+      <div class="row justify-content-center my-4">
+        <div class="col-9 h4">Recommended products for you</div>
+      </div>
+      <div class="row justify-content-center">
+
+        <div class="col-md-3 mb-4">
+          <div class="card">
+            <img
+              class="card-img-top p-2"
+              src="image/products/" 
+              style="height: 200px"
+              alt=""
+            />
+            <div class="ml-4 my-1">
+              <!-- product name -->
+              <p class="font-weight-bold"></p>
+              <!-- product price -->
+              <p></p>
+            </div>
+            <form action="<%=path %>/Cart" method="post">
+              <input type="hidden" name="productName" value="">
+              <input type="hidden" name="productId" value="">
+               <input type="hidden" name="productImage" value="">
+               <input type="hidden" name="productPrice" value="">
+               <input type="hidden" name="productBrand" value="">
+               <input type="hidden" name="productInventory" value="">
+            <button type="submit" class="btn btn-block w-75 mb-2 mx-auto">
+                Add to Cart
+            </button>
+          </form>
+            <form action="writeReview.jsp">
+               <input type="hidden" name="productName" value=""/>
+               <input type="hidden" name="productId" value="">
+               <input type="hidden" name="productImage" value="">
+              <button type="submit" class="btn btn-block w-75 mb-2 mx-auto">
+                Write Review
+              </button>
+          </form>
+          <form action="viewReview.jsp">
+            <input type="hidden" name="productName" value=""/>
+              <button type="submit" class="btn btn-block w-75 mb-2 mx-auto">
+                View Review
+              </button>
+          </form>
+          </div>
+        </div>
+
+      </div>
     </div>
     <!-- /.container -->
   </body>
