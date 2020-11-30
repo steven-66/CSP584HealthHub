@@ -6,19 +6,10 @@
     <%@ include file="leftNavBar.jsp" %>
 
     <!-- Page Content -->
-    <div class="container">
-      <!-- <div class="row">
-        <div class="col-lg-3">
-          <div class="list-group my-4">
-            <a href="#" class="list-group-item">Appointments</a>
-            <a href="#" class="list-group-item">Doctor</a>
-            <a href="#" class="list-group-item">Health Hubs</a>
-            <a href="#" class="list-group-item">Insurances</a>
-            <a href="#" class="list-group-item">Products</a>
-          </div>
-        </div> -->
+    <div class="container mt-4">
         <!-- /.col-lg-3 -->
         <div class="col-lg-9 mx-auto">
+          <h2>Top Health News</h2>
           <div
             id="carouselExampleIndicators"
             class="carousel slide my-4"
@@ -38,28 +29,59 @@
                 data-target="#carouselExampleIndicators"
                 data-slide-to="2"
               ></li>
+              <li
+                data-target="#carouselExampleIndicators"
+                data-slide-to="3"
+              ></li>
+              <li
+                data-target="#carouselExampleIndicators"
+                data-slide-to="4"
+              ></li>
             </ol>
             <div class="carousel-inner" role="listbox">
               <div class="carousel-item active">
+              	<a class="h4" href=""></a>
                 <img
                   class="d-block img-fluid"
-                  src="./image/event01.jpg"
+                  src="http://placehold.it/900x350"
                   alt="First slide"
                   style="width: 900px; height: 350px"
                 />
               </div>
               <div class="carousel-item">
+              	<a class="h4" href=""></a>
                 <img
                   class="d-block img-fluid"
                   src="http://placehold.it/900x350"
                   alt="Second slide"
+                  style="width: 900px; height: 350px"
                 />
               </div>
               <div class="carousel-item">
+              	<a class="h4" href=""></a>
                 <img
                   class="d-block img-fluid"
                   src="http://placehold.it/900x350"
                   alt="Third slide"
+                  style="width: 900px; height: 350px"
+                />
+              </div>
+              <div class="carousel-item">
+              	<a class="h4" href=""></a>
+                <img
+                  class="d-block img-fluid"
+                  src="http://placehold.it/900x350"
+                  alt="Third slide"
+                  style="width: 900px; height: 350px"
+                />
+              </div>
+              <div class="carousel-item">
+              	<a class="h4" href=""></a>
+                <img
+                  class="d-block img-fluid"
+                  src="http://placehold.it/900x350"
+                  alt="Third slide"
+                  style="width: 900px; height: 350px"
                 />
               </div>
             </div>

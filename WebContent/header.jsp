@@ -48,8 +48,8 @@
       crossorigin="anonymous"
     ></script>
     <script type="text/javascript" src="js/autocomplete.js"></script>
-    <script type="text/javascript" src="js/cart.js">
-    </script>
+    <script type="text/javascript" src="js/cart.js"></script>
+    <script type="text/javascript" src="js/news.js"></script>
   </head>
 
   <body>
