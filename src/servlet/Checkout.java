@@ -18,5 +18,6 @@ public class Checkout extends HttpServlet{
 			response.sendRedirect("login.jsp");
 			return;
 		}
+		
 	}
 }

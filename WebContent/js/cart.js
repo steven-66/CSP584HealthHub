@@ -3,7 +3,7 @@
  */
 $(function(){
 	
-	$("input[type='text']").change(function(){
+	$("#quantity").change(function(){
 		var quantityVal = $.trim(this.value);
 		var flag = false;
 		var reg = /^\d+$/g;

@@ -31,7 +31,7 @@ public class SubmitReview extends HttpServlet {
 		String rating = request.getParameter("rating");
 		String headline = request.getParameter("reviewHeadline");
 		String reviewContent = request.getParameter("reviewContent");
-		mongoDBService.insert(productName, Integer.parseInt(rating), headline, reviewContent);
+		mongoDBService.insert(utilities.username(), productName, Integer.parseInt(rating), headline, reviewContent);
 		try {
 			response.getWriter().print("Review Submitted, jump to homepage");
 		} catch (IOException e) {

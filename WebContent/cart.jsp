@@ -9,7 +9,7 @@
 	<!-- Page Content -->
     <div class="container mt-4">
       <div class="row">
-      <form action="<%=path%>/Checkout">
+      <form action="checkout.jsp">
         <table class="table table-hover col-9 mx-auto">
           <thead>
             <tr>

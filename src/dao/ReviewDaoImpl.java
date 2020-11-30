@@ -16,10 +16,11 @@ import util.MongoDBUtil;
 public class ReviewDaoImpl implements ReviewDao{
 	private MongoCollection<Document> myReviews;
 	@Override
-	public void insertReview(String name, int rating, String headline, String content) {
+	public void insertReview(String userName, String name, int rating, String headline, String content) {
 		// TODO Auto-generated method stub
 		myReviews = MongoDBUtil.getConnection();
 		Document document = new Document("title", "healthhubReviews").
+		append("userName", userName).
 		append("productName", name).
 		append("headline", headline).
 		append("rating", rating).
@@ -40,7 +41,7 @@ public class ReviewDaoImpl implements ReviewDao{
 				
 					if(obj.getString("productName").equals(productName))
 					{	
-						Review review =new Review(obj.getString("productName"), obj.getString("rating"), obj.getString("headline"), obj.getString("text"));
+						Review review =new Review(obj.getString("userName"),obj.getString("productName"), obj.getInteger("rating").toString(), obj.getString("headline"), obj.getString("text"));
 						//add to review hashmap
 						reviews.add(review);
 					}

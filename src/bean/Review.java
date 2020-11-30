@@ -24,6 +24,7 @@ public class Review implements Serializable{
 	private String retailercity;
 	private String retailerState;
 	
+	private String userName;
 	private String reviewRating;
 	private String headline;
 	private String reviewDate;
@@ -31,7 +32,8 @@ public class Review implements Serializable{
 	private int count;
 	
 	
-	public Review(String productName, String rating, String headline, String reviewContent) {
+	public Review(String userName, String productName, String rating, String headline, String reviewContent) {
+		this.setUserName(userName);
 		this.productName = productName;
 		this.reviewRating = rating;
 		this.setHeadline(headline);
@@ -163,6 +165,14 @@ public class Review implements Serializable{
 
 	public void setHeadline(String headline) {
 		this.headline = headline;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 }

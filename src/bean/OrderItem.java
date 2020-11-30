@@ -1,6 +1,8 @@
 package bean;
 
-public class OrderItem{
+import java.io.Serializable;
+
+public class OrderItem implements Serializable{
 	private String productId;
 	private String name;
 	private double price;
@@ -23,6 +25,14 @@ public class OrderItem{
 		this.totalPrice = price;
 		this.setInventory(inventory);
 		quantity = 1;
+	}
+	public OrderItem(String name, String brand, double totalPrice, int quantity, String purchaseDate) {
+		// TODO Auto-generated constructor stub
+		this.name = name;
+		this.brand = brand;
+		this.totalPrice = totalPrice;
+		this.quantity = quantity;
+		this.purchaseDate = purchaseDate;
 	}
 	public String getProductId() {
 		return productId;
