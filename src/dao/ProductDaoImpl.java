@@ -94,7 +94,6 @@ public class ProductDaoImpl implements ProductDao{
 		
 		return null;
 	}
-
 	@Override
 	public List<Product> getAll() {
 		List<Product> list = new ArrayList<>();
@@ -170,5 +169,26 @@ public class ProductDaoImpl implements ProductDao{
 		}finally {
 			JDBCUtil.close(conn);
 		}
+	}
+
+	public Product getProductObjById(String id) {
+		// TODO Auto-generated method stub
+		String sql = "SELECT * FROM product WHERE id='" + id + "'";
+		Product prodObj = new Product();
+		conn = JDBCUtil.getConnection();
+		try {
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				prodObj = new Product(rs.getString("id"), rs.getString("productName"), rs.getDouble("price"), rs.getString("image"), rs.getString("manufacturer"), rs.getString("ProductCondition"), rs.getDouble("discount"), rs.getString("catagory"), rs.getInt("inventory"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCUtil.close(conn);
+		}
+		return prodObj;
+		
 	}
 }
