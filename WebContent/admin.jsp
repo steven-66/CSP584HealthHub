@@ -42,7 +42,7 @@
 						<td class="align-middle">${product.catagory}</td>
 						<td class="align-middle">${product.inventory}</td>
 						<td class="align-middle"><a class="mr-3" href="#"><i
-								class="fas fa-edit" style="color: green"></i></a> <a href="#"><i
+								class="fas fa-edit" style="color: green"></i></a> <a href="ProductCrudProcess?method=delete&id=${product.id}"><i
 								class="fas fa-trash-alt" style="color: red"></i></a></td>
 					</tr>
 				</c:forEach>
