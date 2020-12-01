@@ -1,4 +1,5 @@
-<%@page import="bean.OrderItem"%>
+<%@page import="servlet.Utilities, util.IOUtil, service.ProductCrudService"%>
+<%@page import="java.util.*, bean.OrderItem, bean.Product"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
@@ -109,6 +110,75 @@
           </tbody>
         </table>
         </form>
+      </div>
+      
+      <div class="row justify-content-center my-4">
+        <div class="col-9 h4">Recommended products for you</div>
+      </div>
+      <div class="row justify-content-center">
+		<%
+		  // Recommender system logic
+		  IOUtil ioutilities = new IOUtil();
+		  Utilities utilities = new Utilities(request, response);
+		  HashMap<String,String> prodRecmMap = new HashMap<String,String>();
+		  prodRecmMap = ioutilities.readOutputFile();
+		  ArrayList<String> productsList = new ArrayList<String>();
+		  for(String user: prodRecmMap.keySet()) {
+			if(user.equals(utilities.username())) {
+			  String products = prodRecmMap.get(user);
+			  products=products.replace("[","");
+			  products=products.replace("]","");
+			  products=products.replace("\"", " ");
+			  productsList = new ArrayList<String>(Arrays.asList(products.split(",")));
+			  pageContext.setAttribute("productsList", productsList);
+			}
+		  }
+		%>
+		<c:forEach items="${productsList}" var="prod">
+		  <%
+		  	String prod = (String)pageContext.getAttribute("prod");
+		  	prod = prod.replace("'", "");
+		  	Product prodObj = new Product();
+		  	prodObj = new ProductCrudService().getProductObjById(prod.trim());
+		  	System.out.println(prod.trim());
+		  	System.out.println(prodObj.getName());
+		  %>
+		  <div class="col-md-3 mb-4">
+          <div class="card">
+            <img
+              class="card-img-top p-2"
+              src="image/products/<%=prodObj.getImage() %>" 
+              style="height: 200px"
+              alt=""
+            />
+            <div class="ml-4 my-1">
+              <!-- product name -->
+              <p class="font-weight-bold"><%=prodObj.getName() %></p>
+              <!-- product price -->
+              <p>$<%=prodObj.getPrice() %></p>
+            </div>
+            <form action="<%=path %>/Cart" method="post">
+               <input type="hidden" name="productName" value="<%=prodObj.getName() %>">
+               <input type="hidden" name="productId" value="<%=prodObj.getId() %>">
+               <input type="hidden" name="productImage" value="<%=prodObj.getImage() %>">
+               <input type="hidden" name="productPrice" value="<%=prodObj.getPrice() %>">
+               <input type="hidden" name="productBrand" value="<%=prodObj.getManufacturer() %>">
+               <input type="hidden" name="productInventory" value="<%=prodObj.getInventory() %>">
+		       <button type="submit" class="btn btn-block w-75 mb-2 mx-auto">Add to Cart</button>
+            </form>
+            <form action="writeReview.jsp">
+               <input type="hidden" name="productName" value="<%=prodObj.getName() %>"/>
+               <input type="hidden" name="productId" value="<%=prodObj.getId() %>">
+               <input type="hidden" name="productImage" value="<%=prodObj.getImage() %>">
+               <button type="submit" class="btn btn-block w-75 mb-2 mx-auto">Write Review</button>
+            </form>
+            <form action="viewReview.jsp">
+            <input type="hidden" name="productName" value="<%=prodObj.getName() %>"/>
+            <button type="submit" class="btn btn-block w-75 mb-2 mx-auto">View Review</button>
+            </form>
+          </div>
+        </div>
+	  </c:forEach>
       </div>
     </div>
     <!-- /.container -->

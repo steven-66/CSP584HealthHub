@@ -65,3 +65,9 @@ CREATE TABLE `user` (
   `usertype` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+INSERT INTO user VALUES("1","judy@gmail.com","1234","Judy","Huang","customer");
+INSERT INTO user VALUES("2","liza@gmail.com","0000","Liza","Badom","customer");
+INSERT INTO user VALUES("3","john@gmail.com","1111","John","Welch","customer");
+INSERT INTO user VALUES("4","kelly@gmail.com","1223","Kelly","Ball","customer");
+INSERT INTO user VALUES("5","ryan@gmail.com","9988","Ryan","Perry","customer");
