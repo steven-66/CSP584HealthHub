@@ -189,6 +189,5 @@ public class ProductDaoImpl implements ProductDao{
 			JDBCUtil.close(conn);
 		}
 		return prodObj;
-		
 	}
 }

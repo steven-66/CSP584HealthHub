@@ -23,7 +23,7 @@ public class ProductCrudService {
 	public List<Product> getProductByCatagory(String catagory){
 		return productDaoImpl.getProductByCatagory(catagory);
 	}
-	public Product getProductObjById(String id){
+	public Product getProductObjById(String id) {
 		return productDaoImpl.getProductObjById(id);
 	}
 }

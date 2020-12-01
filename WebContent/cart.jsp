@@ -158,35 +158,27 @@
               <p>$<%=prodObj.getPrice() %></p>
             </div>
             <form action="<%=path %>/Cart" method="post">
-              <input type="hidden" name="productName" value="<%=prodObj.getName() %>">
-              <input type="hidden" name="productId" value="<%=prodObj.getId() %>">
+               <input type="hidden" name="productName" value="<%=prodObj.getName() %>">
+               <input type="hidden" name="productId" value="<%=prodObj.getId() %>">
                <input type="hidden" name="productImage" value="<%=prodObj.getImage() %>">
                <input type="hidden" name="productPrice" value="<%=prodObj.getPrice() %>">
                <input type="hidden" name="productBrand" value="<%=prodObj.getManufacturer() %>">
                <input type="hidden" name="productInventory" value="<%=prodObj.getInventory() %>">
-            <button type="submit" class="btn btn-block w-75 mb-2 mx-auto">
-                Add to Cart
-            </button>
-          </form>
+		       <button type="submit" class="btn btn-block w-75 mb-2 mx-auto">Add to Cart</button>
+            </form>
             <form action="writeReview.jsp">
                <input type="hidden" name="productName" value="<%=prodObj.getName() %>"/>
                <input type="hidden" name="productId" value="<%=prodObj.getId() %>">
                <input type="hidden" name="productImage" value="<%=prodObj.getImage() %>">
-              <button type="submit" class="btn btn-block w-75 mb-2 mx-auto">
-                Write Review
-              </button>
-          </form>
-          <form action="viewReview.jsp">
+               <button type="submit" class="btn btn-block w-75 mb-2 mx-auto">Write Review</button>
+            </form>
+            <form action="viewReview.jsp">
             <input type="hidden" name="productName" value="<%=prodObj.getName() %>"/>
-              <button type="submit" class="btn btn-block w-75 mb-2 mx-auto">
-                View Review
-              </button>
-          </form>
+            <button type="submit" class="btn btn-block w-75 mb-2 mx-auto">View Review</button>
+            </form>
           </div>
         </div>
 	  </c:forEach>
-        
-
       </div>
     </div>
     <!-- /.container -->
