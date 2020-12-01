@@ -1,3 +1,4 @@
+<%@ page import="service.ProductCrudService, java.util.*, bean.Product"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ include file="header.jsp"%>
@@ -23,23 +24,28 @@
 					<th>Action</th>
 				</tr>
 			</thead>
+			<%
+			    List<Product> products = new ProductCrudService().getAllProducts();
+			    pageContext.setAttribute("products", products);
+			%>
 			<tbody>
-				<tr>
-					<td class="align-middle">XXX</td>
-					<td class="align-middle">Master Cardiology Stethoscope 27 in
-						Length</td>
-					<td class="align-middle"><img src="image/pic01.jpg"
-						style="width: 60px" /></td>
-					<td class="align-middle">XXX</td>
-					<td class="align-middle">XXX</td>
-					<td class="align-middle">XXX</td>
-					<td class="align-middle">XXX</td>
-					<td class="align-middle">XXX</td>
-					<td class="align-middle">XXX</td>
-					<td class="align-middle"><a class="mr-3" href="#"><i
-							class="fas fa-edit" style="color: green"></i></a> <a href="#"><i
-							class="fas fa-trash-alt" style="color: red"></i></a></td>
-				</tr>
+				<c:forEach items="${products}" var="product">
+					<tr>
+						<td class="align-middle">${product.id}</td>
+						<td class="align-middle">${product.name}</td>
+						<td class="align-middle"><img
+							src="image/products/${product.image}" style="width: 60px" /></td>
+						<td class="align-middle">${product.price}</td>
+						<td class="align-middle">${product.manufacturer}</td>
+						<td class="align-middle">${product.condition}</td>
+						<td class="align-middle">${product.discount}</td>
+						<td class="align-middle">${product.catagory}</td>
+						<td class="align-middle">${product.inventory}</td>
+						<td class="align-middle"><a class="mr-3" href="#"><i
+								class="fas fa-edit" style="color: green"></i></a> <a href="#"><i
+								class="fas fa-trash-alt" style="color: red"></i></a></td>
+					</tr>
+				</c:forEach>
 			</tbody>
 		</table>
 	</div>
