@@ -5,13 +5,13 @@
 
 <!-- Navigation -->
 <nav
-  class="navbar justify-content-center navbar-light fixed-top fixed-top-2"
-  style="box-shadow: none">
-  <ul class="nav ml-auto mr-5">
-    <li class="nav-item px-3"><a class="btn btn-outline-success mt-2"
-      href="productForm.jsp"><i class="fas fa-list-ul pr-2"
-        style="color: green"></i>Add Product</a></li>
-  </ul>
+	class="navbar justify-content-center navbar-light fixed-top fixed-top-2"
+	style="box-shadow: none">
+	<ul class="nav ml-auto mr-5">
+		<li class="nav-item px-3"><a class="btn btn-outline-success mt-2"
+			href="ProductCrudProcess?action=showNewForm"><i
+				class="fas fa-list-ul pr-2" style="color: green"></i>Add Product</a></li>
+	</ul>
 </nav>
 
 <!-- Page Content -->
@@ -49,8 +49,10 @@
 						<td class="align-middle">${product.discount}</td>
 						<td class="align-middle">${product.catagory}</td>
 						<td class="align-middle">${product.inventory}</td>
-						<td class="align-middle"><a class="mr-3" href="#"><i
-								class="fas fa-edit" style="color: green"></i></a> <a href="ProductCrudProcess?method=delete&id=${product.id}"><i
+						<td class="align-middle"><a class="mr-3"
+							href="ProductCrudProcess?action=showEditForm&id=${product.id}"><i
+								class="fas fa-edit" style="color: green"></i></a> <a
+							href="ProductCrudProcess?action=deleteProduct&id=${product.id}"><i
 								class="fas fa-trash-alt" style="color: red"></i></a></td>
 					</tr>
 				</c:forEach>
