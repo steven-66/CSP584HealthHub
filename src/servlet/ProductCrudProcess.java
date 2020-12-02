@@ -24,10 +24,40 @@ public class ProductCrudProcess extends HttpServlet {
         }
     }
 
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws IOException, ServletException {
+        addProduct(request, response);
+    }
+
     private void deleteProduct(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String productId = request.getParameter("id");
         productCrudService.delete(productId);
-        request.getRequestDispatcher("admin.jsp").forward(request, response);
+        response.sendRedirect("admin.jsp");
+    }
+
+    private void addProduct(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String productId = request.getParameter("productId");
+        String productName = request.getParameter("productName");
+        String productPrice = request.getParameter("productPrice");
+        String productImage = request.getParameter("productImage");
+        String productBrand = request.getParameter("manufacturer");
+        String productCondition = request.getParameter("condition");
+        String productDiscount = request.getParameter("discount");
+        String productCatagory = request.getParameter("catagory");
+        String productInventory = request.getParameter("inventory");
+        Product product = new Product();
+        product.setId(productId);
+        product.setName(productName);
+        product.setPrice(Double.parseDouble(productPrice));
+        product.setImage(productImage);
+        product.setManufacturer(productBrand);
+        product.setCondition(productCondition);
+        product.setDiscount(Double.parseDouble(productDiscount));
+        product.setCatagory(productCatagory);
+        product.setInventory(Integer.parseInt(productInventory));
+        productCrudService.add(product);
+        response.sendRedirect("admin.jsp");
     }
 }
