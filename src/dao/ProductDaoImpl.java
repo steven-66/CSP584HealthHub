@@ -58,7 +58,7 @@ public class ProductDaoImpl implements ProductDao {
     @Override
     public void update(Product p) {
         // TODO Auto-generated method stub
-        String sql = "UPDATE product SET productName=?, price=?, image=?, manufacturer=?, productCondition=?, discount=?, catagory=?, inventory=?, name WHERE id=?;";
+        String sql = "UPDATE product SET productName=?, price=?, image=?, manufacturer=?, productCondition=?, discount=?, catagory=?, inventory=? WHERE id=?;";
         conn = JDBCUtil.getConnection();
         try {
             ps = conn.prepareStatement(sql);

@@ -17,7 +17,7 @@ public class ProductCrudService {
         productDaoImpl.delete(id);
     }
 
-    public void upadate(Product p) {
+    public void update(Product p) {
         productDaoImpl.update(p);
     }
 
