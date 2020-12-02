@@ -1,9 +1,20 @@
 package bean;
 
+import java.util.List;
+
 public class Doctor {
+	private int id;
 	private String name;
 	private String specilization;
 	private String phoneNum;
+	private List<Appointment> appointments;
+	
+	private String address;
+	private String state;
+	private String city;
+	private String zipcode;
+	private String longtitude;
+	private String latititude;
 	public String getName() {
 		return name;
 	}
@@ -13,12 +24,55 @@ public class Doctor {
 	public Doctor() {
 		
 	}
-	public Doctor(String name, String specilization, String phoneNum, String address, String zipcode) {
+	public Doctor(int id, String name, String specilization, String phoneNum, String address, String state, String city,
+			String zipcode, String longtitude, String latititude) {
+		super();
+		this.id = id;
 		this.name = name;
 		this.specilization = specilization;
 		this.phoneNum = phoneNum;
 		this.address = address;
+		this.state = state;
+		this.city = city;
 		this.zipcode = zipcode;
+		this.longtitude = longtitude;
+		this.latititude = latititude;
+	}
+	public Doctor(String name, String specilization, String phoneNum, 
+			String address, String state, String city, String zipcode, String longtitude, String latititude) {
+		this.name = name;
+		this.specilization = specilization;
+		this.phoneNum = phoneNum;
+		this.address = address;
+		this.state = state;
+		this.city = city;
+		this.zipcode = zipcode;
+		this.longtitude = longtitude;
+		this.latititude = latititude;
+	}
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
+	}
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	public String getLongtitude() {
+		return longtitude;
+	}
+	public void setLongtitude(String longtitude) {
+		this.longtitude = longtitude;
+	}
+	public String getLatititude() {
+		return latititude;
+	}
+	public void setLatititude(String latititude) {
+		this.latititude = latititude;
 	}
 	public String getSpecilization() {
 		return specilization;
@@ -44,6 +98,17 @@ public class Doctor {
 	public void setZipcode(String zipcode) {
 		this.zipcode = zipcode;
 	}
-	private String address;
-	private String zipcode;
+	public List<Appointment> getAppointments() {
+		return appointments;
+	}
+	public void setAppointments(List<Appointment> appointments) {
+		this.appointments = appointments;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	
 }

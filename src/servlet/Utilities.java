@@ -49,6 +49,10 @@ public class Utilities extends HttpServlet {
 			return session.getAttribute("usertype").toString();
 		return null;
 	}
+	public boolean cartIsEmpty() {
+		Map<String, OrderItem> orderMap = (Map<String, OrderItem>) session.getAttribute("orderMap");
+		return orderMap == null || orderMap.size() == 0;
+	}
 	public void addToCart(OrderItem orderItem) {
 		// TODO Auto-generated method stub
 		Map<String, OrderItem> orderMap = (Map<String, OrderItem>) session.getAttribute("orderMap");

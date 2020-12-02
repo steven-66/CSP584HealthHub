@@ -30,6 +30,7 @@ public class OrderProcess extends HttpServlet {
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		generateOrder(request, response);
+		
 	}
 	private void orderDetails(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
@@ -75,13 +76,27 @@ public class OrderProcess extends HttpServlet {
 		String cvv = request.getParameter("cc-cvv");
 		String paymentInfo = paymentMethod + "," + nameOnCard + "," + cardNum + "," + expiration + "," + cvv;
 		String deliveryOption = request.getParameter("deliveryOption");
-		String store = null;
+		String store = "N/A";
+		
 		if(deliveryOption.equals("Store Pickup")) {
 			store = request.getParameter("storeName");
 		}
 		String orderId = MyUUID.getUUIDInOrderId().toString();
+		request.setAttribute("subtotal", request.getParameter("subtotal"));
+		request.setAttribute("tax", request.getParameter("tax"));
+		request.setAttribute("total", request.getParameter("total"));
+		request.setAttribute("deliveryDate", request.getParameter("deliveryDate"));
+		request.setAttribute("orderId", orderId);
+		request.setAttribute("purchaseDate", new Date().toString());
+		System.out.println(request.getParameter("total"));
 		for(OrderItem item: ((Map<String, OrderItem>) session.getAttribute("orderMap")).values()) {
 			orderService.generateOrder(utility.username(), fullName, address, city, state, zipcode, paymentInfo, deliveryOption, store, orderId, item);
+		}
+		try {
+			request.getRequestDispatcher("confirmation.jsp").forward(request, response);
+		} catch (ServletException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 }

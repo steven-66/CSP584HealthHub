@@ -242,7 +242,8 @@
 		  					SimpleDateFormat sd = new SimpleDateFormat("MMM.dd",Locale.US);
 		  					String deliveryDate = sd.format(date.getTime());
 	                      %>
-	                      <p class="text-success font-weight-bold" name="deliveryDate"><%=deliveryDate %></p>
+	                      <p class="text-success font-weight-bold"><%=deliveryDate %></p>
+	                      <input type="hidden" name="deliveryDate" value="<%=deliveryDate %>">
 	                    </td>
 	                    <td class="col-sm-5 col-md-5">
 	                      <div class="media">
@@ -381,6 +382,7 @@
                 >
                   Total before tax
                   <span>$<%=String.format("%.2f", total) %></span>
+                  <input type="hidden" name="subtotal" value="<%=String.format("%.2f", total) %>">
                 </li>
                 <!-- Tax amount -->
                 <li
@@ -388,6 +390,7 @@
                 >
                   Estimated tax
                   <span>$<%=String.format("%.2f", tax) %></span>
+                  <input type="hidden" name="tax" value="<%=String.format("%.2f", tax) %>">
                 </li>
                 <!-- Total amount -->
                 <li
@@ -397,6 +400,7 @@
                     <strong class="text-danger">Order Total</strong>
                   </div>
                   <span><strong class="text-danger">$<%=String.format("%.2f", total + shippingFee) %></strong></span>
+                  <input type="hidden" name="total" value="<%=String.format("%.2f", total + shippingFee) %>">
                 </li>
               </ul>
 
