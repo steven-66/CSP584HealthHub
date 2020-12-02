@@ -4,7 +4,15 @@
 <%@ include file="header.jsp"%>
 
 <!-- Navigation -->
-<%@ include file="topNavBarAdmin.jsp"%>
+<nav
+  class="navbar justify-content-center navbar-light fixed-top fixed-top-2"
+  style="box-shadow: none">
+  <ul class="nav ml-auto mr-5">
+    <li class="nav-item px-3"><a class="btn btn-outline-success mt-2"
+      href="productForm.jsp"><i class="fas fa-list-ul pr-2"
+        style="color: green"></i>Add Product</a></li>
+  </ul>
+</nav>
 
 <!-- Page Content -->
 <div class="container mt-4">
