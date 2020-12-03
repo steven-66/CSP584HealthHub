@@ -22,7 +22,7 @@ public class LoginServlet extends HttpServlet {
 				HttpSession session = request.getSession(true);
 				session.setAttribute("username", username);
 				session.setAttribute("usertype", usertype);
-				if(usertype.equals("customer"))response.sendRedirect("listProduct.jsp");
+				if(usertype.equals("customer"))response.sendRedirect("index.jsp");
 				else if(usertype.equals("manager"))response.sendRedirect("admin.jsp");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
