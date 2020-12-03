@@ -50,7 +50,27 @@
     <script type="text/javascript" src="js/autocomplete.js"></script>
     <script type="text/javascript" src="js/cart.js"></script>
     <script type="text/javascript" src="js/news.js"></script>
-
+	<script>
+		$(document).ready(function(){
+			$.ajax({
+		        url: "UserProfile",
+		        type: "GET",
+		        data: {
+		        	method:"check"
+		        },
+		        success: function (msg) {
+		        	msg = $.parseJSON(msg);
+		        	console.log(msg);
+		            if(msg == "true"){
+		            	alert("Your profile is incomplete, please complete your profile");
+		            }
+		        },
+		        error: function(){
+		            console.log("error occurred while making ajax call;")
+		        }
+		    });    
+		});
+	</script>
   </head>
 
   <body>
@@ -89,6 +109,7 @@
           	            +"<a class='dropdown-item' href='LogoutServlet'>Log out</a>"
           	            +"<a class='dropdown-item' href='viewSchedule.jsp'>View Schedule</a>"
           	            +"<a class='dropdown-item' href='viewOrder.jsp'>View Order</a>"
+          	           	+"<a class='dropdown-item' href='UserProfile?method=view'>View Profile</a>"
           	          	+"</div>");
           	}else{
           		out.println("<i class='far fa-user'> Account</i></a>");

@@ -6,8 +6,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
 import bean.User;
 import util.JDBCUtil;
 
@@ -140,6 +138,88 @@ public class UserDaoImpl implements UserDao{
 			JDBCUtil.close(conn);
 		}
 		return true;
+	}
+
+	@Override
+	public boolean checkProfile(String username) {
+		if(username == null)return false;
+		// TODO Auto-generated method stub
+		conn = JDBCUtil.getConnection();
+		String sql = "SELECT * FROM user WHERE username='" + username + "';";
+		try {
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			int i = 6;
+			while(rs.next()) {
+				if(rs.getString(i++) == null)return true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCUtil.close(conn);
+		}
+		return false;
+	}
+
+	@Override
+	public void updateProfile(User user) {
+		// TODO Auto-generated method stub
+		conn = JDBCUtil.getConnection();
+		String sql = "UPDATE user SET firstname=?, lastname=?, gender=?, birth=?, address=?, city=?, state=?, zipcode=?, job=?, email=?, age=? WHERE username='" + user.getUserName() + "';";
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, user.getFirstName());
+			ps.setString(2, user.getLastName());
+			ps.setString(3, user.getGender());
+			ps.setString(4,  user.getBirth());
+			ps.setString(5, user.getAddress());
+			ps.setString(6, user.getCity());
+			ps.setString(7, user.getState());
+			ps.setString(8, user.getZipcode());
+			ps.setString(9, user.getJob());
+			ps.setString(10, user.getEmail());
+			ps.setString(11, user.getAge());
+//			System.out.println(ps);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCUtil.close(conn);
+		}
+	}
+
+	public User getProfile(String username) {
+		// TODO Auto-generated method stub
+		conn = JDBCUtil.getConnection();
+		User user = new User();
+		String sql = "SELECT firstname, lastname, gender, birth, age, job, address, city, state, zipcode, email FROM user WHERE username='" + username + "';";
+		try {
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			int i = 1;
+			if(rs.next()) {
+				if(rs.getString(i) != null)user.setFirstName(rs.getString(i++));
+				if(rs.getString(i) != null)user.setLastName(rs.getString(i++));
+				if(rs.getString(i) != null)user.setGender(rs.getString(i++));
+				if(rs.getString(i) != null)user.setBirth(rs.getString(i++));
+				if(rs.getString(i) != null)user.setAge(rs.getString(i++));
+				if(rs.getString(i) != null)user.setJob(rs.getString(i++));
+				if(rs.getString(i) != null)user.setAddress(rs.getString(i++));
+				if(rs.getString(i) != null)user.setCity(rs.getString(i++));
+				if(rs.getString(i) != null)user.setState(rs.getString(i++));
+				
+				if(rs.getString(i) != null)user.setZipcode(rs.getString(i++));
+				if(rs.getString(i) != null)user.setEmail(rs.getString(i++));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCUtil.close(conn);
+		}
+		return user;
 	}
 
 }

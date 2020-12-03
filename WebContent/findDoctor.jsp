@@ -23,7 +23,7 @@
                   <%
                   	List<String> specialties = (List<String>)request.getAttribute("specialties");
                   	pageContext.setAttribute("specialties", specialties);
-                  	List<Doctor> doctors = (List<Doctor>)request.getAttribute("doctors");
+                  	
                   %>
                   <c:forEach items="${specialties}" var="specialty">
                     <div class="filters-form-checkbox">
@@ -99,6 +99,12 @@
 
         </div>
         <div class="col-9" id="custom-border">
+        	<%List<Doctor> doctors = (List<Doctor>)request.getAttribute("doctors");
+        		if(doctors == null){
+        			out.print("<li class='doctor-info' id='custom-border'>"+
+                			"<p>Select a Doctor to schedule appoinment</p></li>");
+        		}
+        	%>
           <ul>
           	<c:forEach items="${doctors}" var="doctor">
           		<div style="display:'none'" > 

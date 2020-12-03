@@ -11,7 +11,7 @@
           >
         </li>
         <li class="nav-item px-3">
-          <a class="nav-link active" href="appointment.html"
+          <a class="nav-link active" href="findDoctor.jsp"
             ><i class="fas fa-calendar-alt"></i> Schedule an Appointment</a
           >
         </li>
@@ -21,7 +21,7 @@
           >
         </li>
         <li class="nav-item px-3">
-          <a class="nav-link" href="#"
+          <a class="nav-link" href="medical-service.jsp"
             ><i class="far fa-compass"></i> Medical Services</a
           >
         </li>

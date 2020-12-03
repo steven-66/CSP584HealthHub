@@ -3,13 +3,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ include file="header.jsp"%>
-        </li>
-        <li class="nav-item ml-3">
-          <a class="nav-link text-light" href="#"><i class="fas fa-shopping-cart"></i></a>
-        </li>
-      </ul>
-    </header>
-    
     <!-- Navigation -->
     <%@ include file="leftNavBar.jsp" %>
 
