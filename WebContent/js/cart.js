@@ -2,9 +2,30 @@
  * 
  */
 $(function(){
-	
+	$("#cart").click(function(){
+		var flag = true;
+		$.ajax({
+			async:false,
+	        url: "Cart",
+	        type: "POST",
+	        data: {
+	        	"method" : "checkCart",
+	        },
+	        success: function (msg) {
+	            if(msg == "your cart is empty"){
+	            	flag = false;
+	            	alert("your cart is empty");
+	            }
+	            
+	        },
+	        error: function(){
+	            console.log("error occurred while making ajax call;")
+	        }
+	    });    
+		
+		return flag;
+	});
 	$("input[name='number']").change(function(){
-		console.log(this.value);
 		var quantityVal = $.trim(this.value);
 		var flag = false;
 		var reg = /^\d+$/g;
@@ -22,7 +43,7 @@ $(function(){
 	    var $tr = $(this).parent().parent();
 	    var productName = $.trim($tr.find("td:first").find("a:eq(1)").text());
 	    $.ajax({
-	        url: "CartUpdate",
+	        url: "Cart",
 	        type: "POST",
 	        data: {
 	        	"method" : "updateQuantity",
@@ -57,7 +78,7 @@ $(function(){
 	    var $div = $(this).parent().parent();
 	    var productName = $.trim($div.find("p:first").text());
 	    $.ajax({
-	        url: "CartUpdate",
+	        url: "Cart",
 	        type: "POST",
 	        data: {
 	        	"method" : "updateQuantity",
@@ -77,7 +98,7 @@ $(function(){
 	    var $tr = $(this).parent().parent();
 	    var productName = $.trim($tr.find("td:first").find("a:eq(1)").text());
 		$.ajax({
-	        url: "CartUpdate",
+	        url: "Cart",
 	        type: "POST",
 	        data: {
 	        	"method" : "deleteProduct",
@@ -95,7 +116,7 @@ $(function(){
 		  var $div = $(this).parent().parent();
 		   var productName = $.trim($div.find("p:first").text());
 		$.ajax({
-	        url: "CartUpdate",
+	        url: "Cart",
 	        type: "POST",
 	        data: {
 	        	"method" : "deleteProduct",

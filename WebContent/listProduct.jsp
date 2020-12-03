@@ -41,6 +41,7 @@
 	                  <p>$${product.price}</p>
 	                </div>
 	                <form action="<%=path %>/Cart" method="post">
+	                	<input type="hidden" name="method" value="addToCart">
 	                	<input type="hidden" name="productName" value="${product.name}">
 	                	<input type="hidden" name="productId" value="${product.id}">
 	               		<input type="hidden" name="productImage" value="${product.image}">
