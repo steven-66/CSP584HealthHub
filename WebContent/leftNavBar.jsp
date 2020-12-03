@@ -16,7 +16,7 @@
           >
         </li>
         <li class="nav-item px-3">
-          <a class="nav-link" href="#"
+          <a class="nav-link" href="DoctorServlet"
             ><i class="fas fa-stethoscope"></i> Doctors</a
           >
         </li>

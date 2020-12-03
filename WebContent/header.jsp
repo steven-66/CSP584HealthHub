@@ -50,6 +50,7 @@
     <script type="text/javascript" src="js/autocomplete.js"></script>
     <script type="text/javascript" src="js/cart.js"></script>
     <script type="text/javascript" src="js/news.js"></script>
+
   </head>
 
   <body>
@@ -100,8 +101,8 @@
           %>
         </li>
         <li class="nav-item ml-3">
-          <a class="nav-link text-light" href="#"
-            ><i class="fas fa-shopping-cart"></i
+          <a class="nav-link text-light" href="cart.jsp" id="cart"
+            ><i class="fas fa-shopping-cart" ></i
           ></a>
         </li>
       </ul>

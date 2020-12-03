@@ -1,23 +1,10 @@
+<%@page import="servlet.Utilities"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
  
 <%@ include file="header.jsp"%>
-            <i class="far fa-user"></i> Account
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="login.jsp">Sign in</a>
-            <a class="dropdown-item" href="register.jsp">Create account</a>
-            <a class="dropdown-item" href="viewOrder.jsp">View Order</a>
-          </div>
-        </li>
-        <li class="nav-item ml-3">
-          <a class="nav-link text-light" href="#"
-            ><i class="fas fa-shopping-cart"></i
-          ></a>
-        </li>
-      </ul>
-    </header>
-  <%@ include file="leftNavBar.jsp" %>
+
+<%@ include file="leftNavBar.jsp" %>
     <!-- Page Content -->
     <div class="container mt-4">
       <div class="text-center mb-2"><i class="fas fa-shopping-bag"></i></div>
@@ -30,36 +17,49 @@
           <p class="col-6 font-weight-bold text-right">
             Confirmation email will be sent to
           </p>
-          <p class="col-6">judy667@gmail.com</p>
+	          <% 
+	          	Utilities utilities = new Utilities(request, response);
+	          	String email = utilities.username();
+	          	String subtotal = (String)request.getAttribute("subtotal");
+	    		String tax = (String)request.getAttribute("tax");
+	    		String total = (String)request.getAttribute("total");
+	    		String orderId = (String)request.getAttribute("orderId");
+	    		String purchaseDate = (String)request.getAttribute("purchaseDate");
+	    		String deliveryDate = (String)request.getAttribute("deliveryDate");
+	    		session.removeAttribute("orderMap");
+	    		session.removeAttribute("totalPrice");
+	          %>
+          	  <%=email %>
+          <p class="col-6"></p>
         </div>
         <div class="row">
           <p class="col-6 font-weight-bold text-right">Order number</p>
-          <p class="col-6">10293822112</p>
+          <p class="col-6"><%=orderId %></p>
         </div>
         <div class="row">
           <p class="col-6 font-weight-bold text-right">Order date</p>
-          <p class="col-6">23 Nov 2020 22:47</p>
+          <p class="col-6"><%=purchaseDate %></p>
         </div>
         <div class="row">
           <p class="col-6 font-weight-bold text-right">
             Estimated delivery date
           </p>
-          <p class="col-6">25 Nov 2020</p>
+          <p class="col-6"><%=deliveryDate %></p>
         </div>
         <div class="row">
           <p class="col-6 font-weight-bold text-right">Order details</p>
           <div class="col-6">
             <div class="row">
               <p class="col-4">Subtotal before tax</p>
-              <p class="col-2 text-right">$22.8</p>
+              <p class="col-2 text-right"><%=subtotal %></p>
             </div>
             <div class="row">
               <p class="col-4">Tax</p>
-              <p class="col-2 text-right">$2.2</p>
+              <p class="col-2 text-right"><%=tax %></p>
             </div>
             <div class="row">
               <p class="col-4">Total</p>
-              <p class="col-2 text-right">$25</p>
+              <p class="col-2 text-right"><%=total %></p>
             </div>
           </div>
         </div>
