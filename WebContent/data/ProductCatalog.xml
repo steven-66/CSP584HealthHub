@@ -149,6 +149,22 @@
         <condition>New</condition>
         <discount>2.0</discount>
     </personalcare>
+	<personalcare id="Airstream">
+        <name>Airstream 1875W Professional Ionic Ceramic Hair Dryer</name>
+        <price>19.99</price>
+        <image>Airstream.jpg</image>
+        <manufacturer>Vikston</manufacturer>
+        <condition>New</condition>
+        <discount>2.0</discount>
+    </personalcare>
+	<personalcare id="Magnetic">
+        <name>Golden Magnetic Mud Mask Rich Collagen</name>
+        <price>50.99</price>
+        <image>Magnetic.jpg</image>
+        <manufacturer>Predire</manufacturer>
+        <condition>New</condition>
+        <discount>2.0</discount>
+    </personalcare>
 </PersonalCareCatalog>
 <HomeCareCatalog>
     <homecare id="homecare01">

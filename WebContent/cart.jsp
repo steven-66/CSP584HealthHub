@@ -7,8 +7,9 @@
 <!--header-->
 <%@include file="header.jsp"%>>
 
-<<<<<<< Updated upstream
+<!-- Navigation -->
 <%@ include file="leftNavBar.jsp"%>
+
 <!-- Page Content -->
 <div class="container mt-4">
 	<div class="row">
@@ -184,7 +185,6 @@
 </div>
 <!-- /.container -->
 </body>
-=======
 <%@ include file="leftNavBar.jsp" %>
 	<!-- Page Content -->
     <div class="container mt-4">
@@ -293,5 +293,4 @@
     </div>
     <!-- /.container -->
   </body>
->>>>>>> Stashed changes
 </html>
