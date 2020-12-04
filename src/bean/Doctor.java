@@ -14,7 +14,7 @@ public class Doctor {
 	private String city;
 	private String zipcode;
 	private String longtitude;
-	private String latititude;
+	private String latitude;
 	public String getName() {
 		return name;
 	}
@@ -25,7 +25,7 @@ public class Doctor {
 		
 	}
 	public Doctor(int id, String name, String specilization, String phoneNum, String address, String state, String city,
-			String zipcode, String longtitude, String latititude) {
+			String zipcode, String longtitude, String latitude) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -36,10 +36,10 @@ public class Doctor {
 		this.city = city;
 		this.zipcode = zipcode;
 		this.longtitude = longtitude;
-		this.latititude = latititude;
+		this.latitude = latitude;
 	}
 	public Doctor(String name, String specilization, String phoneNum, 
-			String address, String state, String city, String zipcode, String longtitude, String latititude) {
+			String address, String state, String city, String zipcode, String longtitude, String latitude) {
 		this.name = name;
 		this.specilization = specilization;
 		this.phoneNum = phoneNum;
@@ -48,7 +48,7 @@ public class Doctor {
 		this.city = city;
 		this.zipcode = zipcode;
 		this.longtitude = longtitude;
-		this.latititude = latititude;
+		this.latitude = latitude;
 	}
 	public String getState() {
 		return state;
@@ -68,11 +68,11 @@ public class Doctor {
 	public void setLongtitude(String longtitude) {
 		this.longtitude = longtitude;
 	}
-	public String getLatititude() {
-		return latititude;
+	public String getlatitude() {
+		return latitude;
 	}
-	public void setLatititude(String latititude) {
-		this.latititude = latititude;
+	public void setlatitude(String latitude) {
+		this.latitude = latitude;
 	}
 	public String getSpecilization() {
 		return specilization;

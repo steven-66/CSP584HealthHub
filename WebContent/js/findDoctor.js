@@ -1,21 +1,13 @@
-  
-        $("#edit-actions-submit").click(function () {
-        	var parameters = new Array();
-        	$("input[type=checkbox]").each(function(){
-        		if(this.checked){
-        			parameters.push(this.value);
-        		}
-        	});
-        	var zipcode = $("#txt_zipcode").val();
+ $("#findDoctor").click(function () {
+        	
 		    $.ajax({
-		        url: "MedicalServlet",
-		        type: "POST",
+		        url: "DoctorServlet",
+		        type: "GET",
 		        data: {
-		        	"parameters":parameters,
-		        	 "zipcode":zipcode
+		        	method:"nearbyDoctor"
 		        },
-		        traditional: true,
 		        success: function (msg) {
+		        	
 		            var parsedData = $.parseJSON(msg);
 		            console.log(parsedData);
 		            var coords = Array();
@@ -27,10 +19,8 @@
 						longtitude = longtitude.trim();
 		                var latitude = parsedData[i]["latitude"];
 		                latitude = latitude.trim();
-//		                console.log(new google.maps.LatLng(latitude, longtitude));
 		                coords.push({
-		                    location : new google.maps.LatLng(longtitude,latitude),
-		                    weight: i
+		                    location : new google.maps.LatLng(longtitude, latitude),
 		                });
 		                data.push({
 		                    zipcode : zip,
@@ -38,7 +28,6 @@
 		                });
 		               
 		            }
-		            
 		            initMap(coords, data);  
 		        },
 		        error: function(){
@@ -51,6 +40,8 @@
         	console.log(coords);
              var css = "width:100%; height:480px";
 	         document.getElementById("map").setAttribute("style", css);
+	         document.getElementById("doctorArea").setAttribute("style", "display:none");
+	         $("#mapBorder").removeAttr("style");
 	         map = new google.maps.Map(document.getElementById("map"), {
 	            zoom: 13,
 	            center: new google.maps.LatLng(41.878113, -87.629799),
@@ -78,4 +69,6 @@
             infoWindow.open(map, marker);
           });
         }
-        
+        /**
+ * 
+ */

@@ -57,11 +57,26 @@ public class UserDaoImpl implements UserDao{
 	}
 
 	@Override
-	public User getById(String id) {
+	public User getById(String userName) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	public String getZip(String username)  {
+		String zipcode = "";
+		conn = JDBCUtil.getConnection();
+		String sql = "SELECT zipcode FROM user WHERE username='" + username + "';";
+		try {
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				zipcode = rs.getString("zipcode");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return zipcode;
+	}
 	@Override
 	public List<User> getAll() {
 		// TODO Auto-generated method stub

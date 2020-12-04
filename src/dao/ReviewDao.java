@@ -7,6 +7,7 @@ import bean.Review;
 
 public interface ReviewDao {
 	public List<Review> selectReviewByProduct(String productName);
-	void insertReview(String userName, String name, int rating, String headline, String content);
+	public void insertReview(String username, String productName, int rating, String headline, String reviewContent,
+			String zipcode, String city, Double productPrice);
 	
 }

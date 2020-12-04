@@ -112,7 +112,7 @@ public class DoctorDaoImpl implements DoctorDao{
 			ps.setString(6, doctor.getPhoneNum());
 			ps.setString(7, doctor.getZipcode());
 			ps.setString(8, doctor.getLongtitude());
-			ps.setString(9, doctor.getLatititude());
+			ps.setString(9, doctor.getlatitude());
 			ps.execute();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -168,7 +168,7 @@ public class DoctorDaoImpl implements DoctorDao{
 				ps.setString(6, doctor.getPhoneNum());
 				ps.setString(7, doctor.getZipcode());
 				ps.setString(8, doctor.getLongtitude());
-				ps.setString(9, doctor.getLatititude());
+				ps.setString(9, doctor.getlatitude());
 				ps.execute();
 			}
 		} catch (SQLException e) {
