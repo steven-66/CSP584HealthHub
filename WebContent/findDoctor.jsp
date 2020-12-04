@@ -67,17 +67,6 @@
                           class="form-text"
                         />
                       </div>
-                      <div class="js-form-type-select">
-                        <label for="sel_radius">Distance</label>
-                        <select id="sel_radius" name="rad" class="form-select">
-                          <option value="5">5 miles</option>
-                          <option value="10">10 miles</option>
-                          <option value="25" selected="selected">
-                            25 miles
-                          </option>
-                          <option value="50">50 miles</option>
-                        </select>
-                      </div>
                     </div>
                     <div class="actions">
                       <input
@@ -87,18 +76,25 @@
                         id="edit-actions-submit"
                       />
                     </div>
+                    <div class="row" id="custom-border">
+                            <div class="col" id="custom-border">
+                                <div class="location-list" id="custom-border">
+                                    <a id="findDoctor" href="javascript:void(0)">Doctor Near Me</a>
+                                </div>
+                    		</div>
+             		</div>
                   </div>
                 </form>
               </div>
             </div>
           </div>
         </div>
-		<div class="col-9" id="custom-border" style='display:none;'>
+		<div class="col-9" id="mapBorder" style='display:none;'>
             <!--maps-->
             <div id="map"></div>
 
         </div>
-        <div class="col-9" id="custom-border">
+        <div class="col-9" id="doctorArea">
         	<%List<Doctor> doctors = (List<Doctor>)request.getAttribute("doctors");
         		if(doctors == null){
         			out.print("<li class='doctor-info' id='custom-border'>"+
@@ -127,27 +123,12 @@
 	 				document.getElementById("myForm").submit();
 	 			}
  			</script>
-          
         </div>
       </div>
     </div>
     <!-- Google MAPS-->
-    <script>
-      // Initialize and add the map
-      function initMap() {
-        // The location of Uluru
-        const uluru = { lat: 41.8781, lng: 87.6298 };
-        // The map, centered at Uluru
-        const map = new google.maps.Map(document.getElementById("map"), {
-          zoom: 4,
-          center: uluru,
-        });
-        // The marker, positioned at Uluru
-        const marker = new google.maps.Marker({
-          position: uluru,
-          map: map,
-        });
-      }
+    <script type='text/javascript' defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHKJVOYru4oeEbXSmhM430eSEWbYG0ttc&v=weekly&libraries=visualization"></script>
+    <script type='text/javascript' src="js/findDoctor.js">
     </script>
   </body>
 </html>

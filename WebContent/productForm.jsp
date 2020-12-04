@@ -21,10 +21,10 @@
 		<c:if test="${product != null }">Update Product</c:if>
 	</h4>
 	<c:if test="${product == null }">
-		<form action="ProductCrudProcess?action=addProduct" method="post">
+		<form action="ProductCrudProcess?action=addProduct" method="post" enctype="multipart/form-data">
 	</c:if>
 	<c:if test="${product != null }">
-		<form action="ProductCrudProcess?action=updateProduct" method="post">
+		<form action="ProductCrudProcess?action=updateProduct" method="post" enctype="multipart/form-data">
 	</c:if>
 	<div class="form-group">
 		<!-- Product Id -->
@@ -66,14 +66,14 @@
 	<div class="form-group">
 		<!-- Manufacturer -->
 		<input type="text" class="form-control form-control-lg w-75 mx-auto"
-			id="manufacturer" name="manufacturer"
+			id="manufacturer" name="productBrand"
 			value="<c:out value='${product.manufacturer}' />"
 			placeholder="Manufacturer" required /> <small
 			class="form-text text-muted w-75 mx-auto mb-4"></small>
 	</div>
 	<div class="form-group">
 		<!-- Product Condition -->
-		<select id="condition" name="condition"
+		<select id="condition" name="productCondition"
 			class="form-control w-75 mx-auto mb-4">
 			<option value="New" ${product.condition == 'New' ? 'selected': ''}>New</option>
 			<option value="Used" ${product.catagory == 'Used' ? 'selected': ''}>Used</option>
@@ -82,13 +82,13 @@
 	<div class="form-group">
 		<!-- Preview Discount -->
 		<input type="text" class="form-control form-control-lg w-75 mx-auto"
-			id="discount" name="discount"
+			id="discount" name="productDiscount"
 			value="<c:out value='${product.discount}' />" placeholder="Discount"
 			required /> <small class="form-text text-muted w-75 mx-auto mb-4"></small>
 	</div>
 	<div class="form-group">
 		<!-- Product Catagory -->
-		<select id="catagory" name="catagory"
+		<select id="catagory" name="productCatagory"
 			class="form-control w-75 mx-auto mb-4">
 			<option value="vitamin"
 				${product.catagory == 'vitamin' ? 'selected': ''}>Vitamin</option>
@@ -107,7 +107,7 @@
 	<div class="form-group">
 		<!-- Product Inventory -->
 		<input type="text" class="form-control form-control-lg w-75 mx-auto"
-			id="inventory" name="inventory"
+			id="inventory" name="productInventory"
 			value="<c:out value='${product.inventory}' />"
 			placeholder="Inventory" required /> <small
 			class="form-text text-muted w-75 mx-auto mb-4"></small>

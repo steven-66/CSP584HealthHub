@@ -22,7 +22,7 @@ public class MedicalService {
 	public MedicalService() {
 		
 	}
-	public MedicalService(String id, String name, String address, String zipcode, String latitude, String longtitude) {
+	public MedicalService(String id, String name, String address, String zipcode, String longtitude, String latitude) {
 		super();
 		this.id = id;
 		this.name = name;

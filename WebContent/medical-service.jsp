@@ -56,14 +56,6 @@
                         </div>
                         </div>
                      </div>
-                     <div class="row" id="custom-border">
-
-                            <div class="col" id="custom-border">
-                                <div class="location-list" id="custom-border">
-                                    <h2>Locations</h2>
-                                </div>
-                            </div>
-                    </div>
                 </div>
 
                 <div class="col-9" id="custom-border">
@@ -74,5 +66,6 @@
             </div>
             <script type='text/javascript' defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHKJVOYru4oeEbXSmhM430eSEWbYG0ttc&v=weekly&libraries=visualization"></script>
             <script type="text/javascript" src="js/medical.js"></script>
+            
    <!-- Google MAPS-->
  	<%@include file="footer.jsp"%>

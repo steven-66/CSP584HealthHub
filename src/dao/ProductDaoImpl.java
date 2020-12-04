@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import bean.Bestseller;
 import bean.Product;
 import util.JDBCUtil;
 
@@ -201,4 +202,56 @@ public class ProductDaoImpl implements ProductDao {
         }
         return prodObj;
     }
+
+	public List<Bestseller> getBestSeller() {
+		// TODO Auto-generated method stub
+		List<Bestseller> res = new ArrayList<>();
+		String sql = "SELECT * FROM\r\n" + 
+				"(SELECT Product_ID, count(*) AS NumOfSold FROM transactions group by Product_ID) b LEFT join product p ON b.Product_ID=p.id ORDER BY NumOfSold DESC\r\n" + 
+				"";
+        Product prodObj = new Product();
+        conn = JDBCUtil.getConnection();
+        try {
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                prodObj = new Product(rs.getString("id"), rs.getString("productName"), rs.getDouble("price"),
+                        rs.getString("image"), rs.getString("manufacturer"), rs.getString("ProductCondition"),
+                        rs.getDouble("discount"), rs.getString("catagory"), rs.getInt("inventory"));
+                int numOfSold = rs.getInt("NumOfSold");
+                Bestseller bs = new Bestseller();
+                bs.setNumSold(numOfSold);
+                bs.setProduct(prodObj);
+                res.add(bs);
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } finally {
+            JDBCUtil.close(conn);
+        }
+		return res;
+	}
+
+	public Product getProductByName(String prodcutnm) {
+		// TODO Auto-generated method stub
+		String sql = "SELECT * FROM product WHERE productName='" + prodcutnm + "'";
+        Product prodObj = new Product();
+        conn = JDBCUtil.getConnection();
+        try {
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                prodObj = new Product(rs.getString("id"), rs.getString("productName"), rs.getDouble("price"),
+                        rs.getString("image"), rs.getString("manufacturer"), rs.getString("ProductCondition"),
+                        rs.getDouble("discount"), rs.getString("catagory"), rs.getInt("inventory"));
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } finally {
+            JDBCUtil.close(conn);
+        }
+        return prodObj;
+	}
 }
