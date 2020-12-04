@@ -56,6 +56,7 @@
 	               		<input type="hidden" name="productName" value="${product.name}"/>
 	               		<input type="hidden" name="productId" value="${product.id}">
 	               		<input type="hidden" name="productImage" value="${product.image}">
+	               		<input type="hidden" name="productPrice" value="${product.price}">
 		                <button type="submit" class="btn btn-block w-75 mb-2 mx-auto">
 		                  Write Review
 		                </button>

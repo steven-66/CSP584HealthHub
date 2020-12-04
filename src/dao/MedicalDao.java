@@ -43,7 +43,6 @@ public class MedicalDao {
 		conn = JDBCUtil.getConnection();
 		try {
 			ps = conn.prepareStatement(sql);
-			System.out.println(ps);
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				res.add(new MedicalService(rs.getString("id"), rs.getString("type"), rs.getString("name"), rs.getString("address"), rs.getString("zipcode"), rs.getString("longtitude"), rs.getString("latitude")));

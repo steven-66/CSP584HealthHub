@@ -2,21 +2,6 @@
     pageEncoding="ISO-8859-1"%>
  
 <%@ include file="header.jsp"%>
-            <i class="far fa-user"></i> Account
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="login.jsp">Sign in</a>
-            <a class="dropdown-item" href="register.jsp">Create account</a>
-            <a class="dropdown-item" href="viewOrder.jsp">View Order</a>
-          </div>
-        </li>
-        <li class="nav-item ml-3">
-          <a class="nav-link text-light" href="#"
-            ><i class="fas fa-shopping-cart"></i
-          ></a>
-        </li>
-      </ul>
-    </header>
   <%@ include file="leftNavBar.jsp" %>
     <!-- Page Content -->
     <div class="container mt-4">
@@ -39,6 +24,7 @@
 	             <!-- Selected product name -->
 	             <td class="border-top-0 align-middle">
 	             	<input type="hidden" name="productName" value="<%=request.getParameter("productName")%>">
+	             	<input type="hidden" name="productPrice" value="<%=request.getParameter("productPrice")%>">
 	               <%=request.getParameter("productName")%>
 	             </td>
 	           </tr>
