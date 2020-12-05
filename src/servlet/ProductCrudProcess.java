@@ -154,15 +154,78 @@ public class ProductCrudProcess extends HttpServlet {
 
     private void updateProduct(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String productId = request.getParameter("productId");
-        String productName = request.getParameter("productName");
-        String productPrice = request.getParameter("productPrice");
-        String productImage = request.getParameter("productImage");
-        String productBrand = request.getParameter("manufacturer");
-        String productCondition = request.getParameter("condition");
-        String productDiscount = request.getParameter("discount");
-        String productCatagory = request.getParameter("catagory");
-        String productInventory = request.getParameter("inventory");
+        DiskFileItemFactory factory = new DiskFileItemFactory();
+        ServletFileUpload upload = new ServletFileUpload(factory);
+        //parse request
+        List<FileItem> items = null;
+        try {
+            items = upload.parseRequest(request);
+        } catch (FileUploadException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        String productId = "";
+        String productName = "";
+        String productPrice = "";
+        String productImage = "";
+        String productBrand = "";
+        String productCondition = "";
+        String productDiscount = "";
+        String productCatagory = "";
+        String productInventory = "";
+    
+        for(FileItem item: items) {
+            if(item.isFormField()) {
+                String name = item.getFieldName();
+                String val = item.getString();
+                switch (name) {
+                case "productId":
+                    productId = val;
+                    break;
+                case "productName":
+                    productName = val;
+                    break;
+                case "productPrice":
+                    productPrice = val;
+                    break;
+                case "productBrand":
+                    productBrand = val;
+                    break;
+                case "productCondition":
+                    productCondition = val;
+                    break;
+                case "productDiscount":
+                    productDiscount = val;
+                    break;
+                case "productCatagory":
+                    productCatagory = val;
+                    break;
+                case "productInventory":
+                    productInventory = val;
+                    break;
+                default:
+                    break;
+                }
+            }else { //upload image file
+                InputStream in = item.getInputStream();
+                String fileName = item.getName();//   c:\dsf\a.jpg
+                fileName = "new_" + fileName.substring(fileName.lastIndexOf("\\")+1);//a.jpg 
+                //write image into directory
+                productImage = fileName;
+                String TOMCAT_HOME = System.getProperty("catalina.base");
+                OutputStream out = new FileOutputStream(TOMCAT_HOME + ""
+                        + "\\webapps\\CSP584HealthHub\\image\\products"+"\\"+fileName);
+                byte b[] = new byte[1024];
+                int len = -1;
+                while((len=in.read(b))!=-1){
+                    out.write(b, 0, len);
+                    System.out.println(len);
+                }
+                out.close();
+                in.close();
+                item.delete();
+            }
+        }
         Product product = new Product(productId, productName, Double.parseDouble(productPrice), productImage,
                 productBrand, productCondition, Double.parseDouble(productDiscount), productCatagory,
                 Integer.parseInt(productInventory));

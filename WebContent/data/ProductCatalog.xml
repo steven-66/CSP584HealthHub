@@ -65,6 +65,14 @@
         <condition>New</condition>
         <discount>1.0</discount>
     </vitamin>
+	<vitamin id="vitamin09">
+        <name>Minis Adult 50+</name>
+        <price>18.29</price>
+        <image>vitamin09.jpg</image>
+        <manufacturer>Centrum</manufacturer>
+        <condition>New</condition>
+        <discount>0.0</discount>
+    </vitamin>
 </VitaminCatalog>
 <MedicineCatalog>
     <medicine id="medicine01">
@@ -106,6 +114,30 @@
         <manufacturer>Aleve</manufacturer>
         <condition>New</condition>
         <discount>2.0</discount>
+    </medicine>
+	<medicine id="medicine06">
+        <name>Allergy Medicine</name>
+        <price>19.99</price>
+        <image>medicine06.jpg</image>
+        <manufacturer>ValuMeds</manufacturer>
+        <condition>New</condition>
+        <discount>2.0</discount>
+    </medicine>
+	<medicine id="medicine07">
+        <name>Kids Cold Medicine</name>
+        <price>19.99</price>
+        <image>medicine07.jpg</image>
+        <manufacturer>Hyland's</manufacturer>
+        <condition>New</condition>
+        <discount>6.0</discount>
+    </medicine>
+	<medicine id="medicine08">
+        <name>Children's Honey Cough and Chest Congestion</name>
+        <price>19.99</price>
+        <image>medicine08.jpg</image>
+        <manufacturer>Robitussin</manufacturer>
+        <condition>New</condition>
+        <discount>10.0</discount>
     </medicine>
 </MedicineCatalog>
 <PersonalCareCatalog>
@@ -165,6 +197,38 @@
         <condition>New</condition>
         <discount>2.0</discount>
     </personalcare>
+	<personalcare id="Toothbrush">
+        <name>Electric Toothbrush Powerful Sonic Cleaning</name>
+        <price>24.99</price>
+        <image>Toothbrush.jpg</image>
+        <manufacturer>Fairywill</manufacturer>
+        <condition>New</condition>
+        <discount>2.0</discount>
+    </personalcare>
+	<personalcare id="Gloves">
+        <name>Disposable Gloves Latex-Free Clear Vinyl Gloves</name>
+        <price>12.99</price>
+        <image>Gloves.jpg</image>
+        <manufacturer>Ridex</manufacturer>
+        <condition>New</condition>
+        <discount>0.0</discount>
+    </personalcare>
+	<personalcare id="HeatingPad">
+        <name>Heating Pad for Neck and Shoulder Pain Relief</name>
+        <price>43.99</price>
+        <image>HeatingPad.jpg</image>
+        <manufacturer>Sunbeam</manufacturer>
+        <condition>New</condition>
+        <discount>5.0</discount>
+    </personalcare>
+	<personalcare id="BodyScrub">
+        <name>Premium Organic Body Scrub Set</name>
+        <price>30.99</price>
+        <image>BodyScrub.jpg</image>
+        <manufacturer>pureSCRUBS</manufacturer>
+        <condition>New</condition>
+        <discount>5.0</discount>
+    </personalcare>
 </PersonalCareCatalog>
 <HomeCareCatalog>
     <homecare id="homecare01">
@@ -206,6 +270,22 @@
         <manufacturer>Littmann</manufacturer>
         <condition>New</condition>
         <discount>40.0</discount>
+    </homecare>
+	<homecare id="homecare06">
+        <name>No Rinse Bathing Wipes</name>
+        <price>16.9</price>
+        <image>homecare06.jpg</image>
+        <manufacturer>Nurture</manufacturer>
+        <condition>New</condition>
+        <discount>2.0</discount>
+    </homecare>
+	<homecare id="homecare07">
+        <name>Disposable Underpads</name>
+        <price>14.49</price>
+        <image>homecare07.jpg</image>
+        <manufacturer>Medpride</manufacturer>
+        <condition>New</condition>
+        <discount>0.0</discount>
     </homecare>
 </HomeCareCatalog>
 <NutritionCatalog>
