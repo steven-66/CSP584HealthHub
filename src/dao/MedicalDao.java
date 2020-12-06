@@ -35,7 +35,8 @@ public class MedicalDao {
 			}
 			else sql += " WHERE FIND_IN_SET(type, '";
 			for(int i=0; i<parameters.length; i++) {
-				if(i != parameters.length - 1)sql += parameters[i] + ",";
+				sql += parameters[i];
+				if(i != parameters.length - 1)sql += ",";
 			}
 			sql += "')";
 		}
@@ -44,6 +45,7 @@ public class MedicalDao {
 		try {
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
+			System.out.println(ps);
 			while(rs.next()) {
 				res.add(new MedicalService(rs.getString("id"), rs.getString("type"), rs.getString("name"), rs.getString("address"), rs.getString("zipcode"), rs.getString("longtitude"), rs.getString("latitude")));
 			}

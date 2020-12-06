@@ -17,15 +17,15 @@
 
                             <div class="filters-form-filters">
                                 <div class="filters-form-checkbox">
-                                <input type="checkbox" id="chk_home_health" name="services[]" data-service-id="23" value="homeHealth">
+                                <input type="checkbox" id="chk_home_health" name="parameters" data-service-id="23" value="homeHealth">
                                 <label for="chk_home_health">Home Health</label>
                                 </div>
                                 <div class="filters-form-checkbox">
-                                <input type="checkbox" id="chk_hospice" name="services[]" data-service-id="26" value="hospiceCare">
+                                <input type="checkbox" id="chk_hospice" name="parameters" data-service-id="26" value="hospiceCare">
                                 <label for="chk_hospice">Hospice Care</label>
                                 </div>
                                 <div class="filters-form-checkbox">
-                                <input type="checkbox" id="chk_medical_equipment" name="services[]" data-service-id="25" value="homeMedical">
+                                <input type="checkbox" id="chk_medical_equipment" name="parameters" data-service-id="25" value="homeMedical">
                                 <label for="chk_medical_equipment">Home Medical Equipment</label>
                                 </div>
                             </div>
