@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import bean.Appointment;
 import bean.Bestseller;
 import bean.Product;
 import util.JDBCUtil;
@@ -254,4 +255,5 @@ public class ProductDaoImpl implements ProductDao {
         }
         return prodObj;
 	}
+
 }

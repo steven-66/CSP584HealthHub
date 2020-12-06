@@ -18,7 +18,7 @@ public class MedicalServlet extends HttpServlet{
 	static MedicalDao medicalDao = new MedicalDao();
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) {
 		String[] parameters = request.getParameterValues("parameters");
-		System.out.println(request.getParameter("parameters"));
+		System.out.println(parameters[0]);
 		String zipcode = request.getParameter("zipcode");
 		List<MedicalService> medicalServices = medicalDao.getMedicalByfilters(parameters, zipcode);
 		String medicalJson = new Gson().toJson(medicalServices);
