@@ -11,5 +11,5 @@ public interface DoctorDao extends BasicCRUD<Doctor, Integer>{
 	public List<String> getSpecialties();
 	List<Doctor> getDoctorByFilters(Map<String, String> filter);
 	void addAllDoctors();
-	void addAppointment(Appointment appointment);
+	void addAppointment(Appointment appointment, String username);
 }

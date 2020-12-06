@@ -2,6 +2,8 @@ package dao;
 
 import java.util.List;
 
+import bean.Appointment;
+
 
 public interface BasicCRUD<T,ID> {
 	public void add(T t);

@@ -16,6 +16,7 @@
 		                var addr = parsedData[i]["address"];
 		                var zip = parsedData[i]["zipcode"];
 		                var longtitude = parsedData[i]["longtitude"];
+		                var id = parsedData[i]["id"];
 						longtitude = longtitude.trim();
 		                var latitude = parsedData[i]["latitude"];
 		                latitude = latitude.trim();
@@ -25,6 +26,7 @@
 		                data.push({
 		                    zipcode : zip,
 		                    address : addr, 
+		                    id : id
 		                });
 		               
 		            }
@@ -37,23 +39,22 @@
 		});
         let map, heatmap;
         function initMap(coords, data) {    
-        	console.log(coords);
+        	 console.log(data);
              var css = "width:100%; height:480px";
 	         document.getElementById("map").setAttribute("style", css);
 	         document.getElementById("doctorArea").setAttribute("style", "display:none");
 	         $("#mapBorder").removeAttr("style");
 	         map = new google.maps.Map(document.getElementById("map"), {
 	            zoom: 13,
-	            center: new google.maps.LatLng(41.878113, -87.629799),
 	            mapTypeId: "roadmap",
 	          });
+	         map.setCenter(coords[0]["location"]);
 	          heatmap = new google.maps.visualization.HeatmapLayer({
 	            data: coords,
 	            map: map,
 	          });
           for(var i=0; i<coords.length; i++){
-            var text = data[i]["address"] + ", " + data[i]["zipcode"];
-            
+            var text = "<a href='appointment.jsp?doctorId=" + data[i]["id"] + "'>" + data[i]["address"] + ", " + data[i]["zipcode"] + "</a>";
             addMarker(coords[i]["location"],text);
           }
         }

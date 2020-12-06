@@ -5,6 +5,7 @@ import java.util.Date;
 public class Appointment {
 	//patient info
 	private int doctorId;
+	private int id;
 	public Appointment(int doctorId, String fullName, String gender, String birth, String fullAddress, String phone,
 			String email, Date date) {
 		super();
@@ -16,6 +17,12 @@ public class Appointment {
 		this.phone = phone;
 		this.email = email;
 		this.date = date;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	private String fullName;
 	private String gender;
