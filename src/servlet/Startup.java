@@ -27,7 +27,7 @@ public class Startup extends HttpServlet
 //		SaxParserDataStore.addHashmap();
 //		new ProductDaoImpl().addAllProductsFromXML(new ArrayList<>(SaxParserDataStore.products.values()));
 //		new StoreDaoImpl().addAllStore();
-//		new DoctorDaoImpl().addAllDoctors();
+		new DoctorDaoImpl().addAllDoctors();
 		new MedicalDao().addAllMedical();
    }
 }

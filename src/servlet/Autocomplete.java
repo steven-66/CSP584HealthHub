@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import bean.Product;
 import util.SaxParserDataStore;
 
+import java.util.Arrays;
 import java.util.Iterator;
 
 @WebServlet("/Autocomplete")
@@ -73,8 +74,8 @@ public class Autocomplete extends HttpServlet {
 
             // put the target composer in the request scope to display 
             if ((targetId != null) && SaxParserDataStore.products.containsKey(targetId.trim())) {
-                request.setAttribute("product", SaxParserDataStore.products.get(targetId));
-                request.getRequestDispatcher("/ViewProduct").forward(request, response);
+                request.setAttribute("products", Arrays.asList(SaxParserDataStore.products.get(targetId)));
+                request.getRequestDispatcher("/listProduct.jsp").forward(request, response);
             }
         }
     }

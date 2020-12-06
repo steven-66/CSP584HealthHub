@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -150,12 +151,6 @@ public class DoctorDaoImpl implements DoctorDao{
 		String TOMCAT_HOME = System.getProperty("catalina.base");
 		List<Doctor> doctors = readAllDoctors(TOMCAT_HOME + "//webapps//CSP584HealthHub//data//doctors.txt");
 		conn = JDBCUtil.getConnection();
-		try {
-			conn.prepareStatement("delete from doctor").execute();
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
 		String sql = "INSERT INTO doctor(doctorName, specialty, address, state, city, phoneNum, zipcode, longtitude, latitude) VALUES(?,?,?,?,?,?,?,?,?);";
 		try {
 			ps = conn.prepareStatement(sql);
@@ -180,10 +175,10 @@ public class DoctorDaoImpl implements DoctorDao{
 	}
 
 	@Override
-	public void addAppointment(Appointment appointment) {
+	public void addAppointment(Appointment appointment, String username) {
 		// TODO Auto-generated method stub
 		conn = JDBCUtil.getConnection();
-		String sql = "INSERT INTO appointment(doctorId, fullName, gender, birth, address, phone, email, date) VALUES(?,?,?,?,?,?,?,?);";
+		String sql = "INSERT INTO appointment(doctorId, fullName, gender, birth, address, phone, email, date, userName) VALUES(?,?,?,?,?,?,?,?,?);";
 		try {
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, appointment.getDoctorId());
@@ -194,6 +189,8 @@ public class DoctorDaoImpl implements DoctorDao{
 			ps.setString(6, appointment.getPhone());
 			ps.setString(7, appointment.getEmail());
 			ps.setTimestamp(8, new Timestamp(appointment.getDate().getTime()));
+			ps.setString(9, username);
+			System.out.println(ps);
 			ps.execute();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -202,7 +199,36 @@ public class DoctorDaoImpl implements DoctorDao{
 			JDBCUtil.close(conn);
 		}
 	}
-
+	public Map<Appointment, Doctor> getAppointmentByUser(String username){
+		conn = JDBCUtil.getConnection();
+		Map<Appointment, Doctor> res = new HashMap<Appointment, Doctor>();
+		String sql = "SELECT * FROM appointment a left join doctor d on a.doctorId = d.id where userName ='" + username + "';";
+		try {
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				Appointment appointment = new Appointment();
+				appointment.setId(rs.getInt("id"));
+				appointment.setDate(rs.getDate("date"));
+				appointment.setFullName(rs.getString("fullName"));
+				appointment.setFullAddress(rs.getString("a.address"));
+				appointment.setEmail(rs.getString("email"));
+				appointment.setPhone(rs.getString("phone"));
+				Doctor doctor = new Doctor();
+				doctor.setAddress(rs.getString("d.address"));
+				doctor.setName(rs.getString("doctorName"));
+				doctor.setPhoneNum(rs.getString("phoneNum"));
+				res.put(appointment, doctor);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCUtil.close(conn);
+		}
+		return res;
+	}
 
 	@Override
 	public void delete(Integer id) {
@@ -227,4 +253,20 @@ public class DoctorDaoImpl implements DoctorDao{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	public void removeAppointment(String id) {
+		// TODO Auto-generated method stub
+		conn = JDBCUtil.getConnection();
+		String sql = "DELETE FROM appointment WHERE id='" + id + "'";
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCUtil.close(conn);
+		}
+	}
+
 }

@@ -1,9 +1,11 @@
 package servlet;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +17,16 @@ import service.DoctorService;
 @WebServlet("/AppointmentServlet")
 public class AppointmentServlet extends HttpServlet{
 	private static DoctorService doctorService = new DoctorService();
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) {
+		String id = request.getParameter("id");
+		doctorService.removeAppointment(id);
+		try {
+			request.getRequestDispatcher("viewSchedule.jsp").forward(request, response);
+		} catch (ServletException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) {
 		int doctorId = Integer.parseInt(request.getParameter("doctorId"));
 		String firstName = request.getParameter("firstName");
@@ -40,6 +52,13 @@ public class AppointmentServlet extends HttpServlet{
 			e.printStackTrace();
 		}
 		Appointment appointment = new Appointment(doctorId,firstName+lastName, gender, birth, address+city+state+zipcode, phone, email, date1);
-		doctorService.addAppointment(appointment);
+		doctorService.addAppointment(appointment, new Utilities(request, response).username());
+		try {
+			response.getWriter().print("Appointment Scheduled, jump to homepage");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		response.setHeader("refresh", "2;index.jsp");
 	}
 }

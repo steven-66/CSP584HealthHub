@@ -25,16 +25,6 @@
             ><i class="far fa-compass"></i> Medical Services</a
           >
         </li>
-        <li class="nav-item px-3">
-          <a class="nav-link" href="#"
-            ><i class="far fa-compass"></i> Health Clubs</a
-          >
-        </li>
-        <li class="nav-item px-3">
-          <a class="nav-link" href="#"
-            ><i class="far fa-compass"></i> Hospitals</a
-          >
-        </li>
         <li class="nav-item dropdown px-3">
           <a
             class="nav-link dropdown-toggle"

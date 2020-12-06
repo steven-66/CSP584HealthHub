@@ -26,8 +26,13 @@ public class DoctorService {
 	}
 
 
-	public void addAppointment(Appointment appointment) {
+	public void addAppointment(Appointment appointment, String string) {
 		// TODO Auto-generated method stub
-		doctorDao.addAppointment(appointment);
+		doctorDao.addAppointment(appointment,string);
+	}
+
+	public void removeAppointment(String id) {
+		// TODO Auto-generated method stub
+		doctorDao.removeAppointment(id);
 	}
 }
