@@ -24,9 +24,9 @@ public class Startup extends HttpServlet
 	public void init() throws ServletException
    {
 		System.out.println("System is booting");
-//		SaxParserDataStore.addHashmap();
-//		new ProductDaoImpl().addAllProductsFromXML(new ArrayList<>(SaxParserDataStore.products.values()));
-//		new StoreDaoImpl().addAllStore();
+		SaxParserDataStore.addHashmap();
+		new ProductDaoImpl().addAllProductsFromXML(new ArrayList<>(SaxParserDataStore.products.values()));
+		new StoreDaoImpl().addAllStore();
 		new DoctorDaoImpl().addAllDoctors();
 		new MedicalDao().addAllMedical();
    }
