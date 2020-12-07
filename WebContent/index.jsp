@@ -123,62 +123,6 @@
 				</div>
 			</c:forEach>
 		</div>
-
-		<h4 class="my-4">Recommended products for you</h4>
-
-		<div class="row">
-			<div class="col-lg-4 col-md-6 mb-4">
-				<div class="card h-100">
-					<a href="#"><img class="card-img-top" src="./image/pic01.jpg"
-						style="height: 200px" alt="" /></a>
-					<div class="card-body">
-						<h5 class="card-title">
-							<a href="#">Melatonin 1 mg Fast Dissolve Tablets Strawberry</a>
-						</h5>
-						<p>$6.99</p>
-					</div>
-					<div class="card-footer">
-						<small class="text-muted">&#9733; &#9733; &#9733; &#9733;
-							&#9734;</small>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-lg-4 col-md-6 mb-4">
-				<div class="card h-100">
-					<a href="#"><img class="card-img-top" src="./image/pic02.JPG"
-						style="height: 200px" alt="" /></a>
-					<div class="card-body">
-						<h5 class="card-title">
-							<a href="#">Power Extending Formula Male Enhancement</a>
-						</h5>
-						<p>$12.99</p>
-					</div>
-					<div class="card-footer">
-						<small class="text-muted">&#9733; &#9733; &#9733; &#9733;
-							&#9734;</small>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-lg-4 col-md-6 mb-4">
-				<div class="card h-100">
-					<a href="#"><img class="card-img-top" src="./image/pic03.JPG"
-						style="height: 200px" alt="" /></a>
-					<div class="card-body">
-						<h5 class="card-title">
-							<a href="#">Melatonin Quick Dissolve 3 mg Cherry</a>
-						</h5>
-						<p>$6.99</p>
-					</div>
-					<div class="card-footer">
-						<small class="text-muted">&#9733; &#9733; &#9733; &#9733;
-							&#9734;</small>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- /.row -->
 	</div>
 	<!-- /.col-lg-9 -->
 </div>
