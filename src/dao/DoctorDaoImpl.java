@@ -257,7 +257,7 @@ public class DoctorDaoImpl implements DoctorDao{
 	public void removeAppointment(String id) {
 		// TODO Auto-generated method stub
 		conn = JDBCUtil.getConnection();
-		String sql = "DELETE FROM appointment WHERE id='" + id + "'";
+		String sql = "DELETE FROM appointment WHERE doctorId='" + id + "'";
 		try {
 			ps = conn.prepareStatement(sql);
 			ps.execute();
